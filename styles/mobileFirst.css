@@ -1,0 +1,52 @@
+html{
+    width:100%;
+    text-align: center;
+}
+header{
+    padding:10px;
+    background-color: #f00;
+    color:#000;
+}
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+}
+nav img{
+    float:right;
+    position:fixed;
+    top:20px;
+    right: 20px;
+}
+nav ul {
+    display:none;
+}
+nav ul li{
+    list-style-type: none;
+}
+nav ul li a{
+    text-decoration: none;
+}
+section, footer{
+    text-align: center;
+}
+section{
+    height:500px;
+    padding:10px;
+}
+#eventsPage{
+    background-color: #0f0;
+    color: #000;
+}
+#contactPage{
+    background-color: #00f;
+    color: #fff;
+}
+#contactForm ul li{
+    list-style-type: none;
+}
+footer{
+    padding:10px;
+    background-color: #000;
+    color: #fff;
+}
