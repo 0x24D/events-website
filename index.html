@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en-gb">
-    <head>
-        <meta charset="utf-8">
-        <title>Events Site</title>
-        <link rel="stylesheet" href="styles/mobileFirst.css" media="screen" title="no title">
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Events Site</title>
+    <link rel="stylesheet" href="fonts/Font-Awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/mobileFirst.css" media="screen" title="no title">
+    <script>
+    function toggleOverlay(){
+        var overlay = document.getElementById('overlay');
+        if(overlay.style.display == "block"){
+            overlay.style.display = "none";
+        } else {
+            overlay.style.display = "block";
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="overlay">
         <nav>
-            <img src="images/whiteNavicon.png" alt="menuButton" onclick=window.alert("Clicked!"); />
+            <span id=navButton class="fa fa-bars" onclick=toggleOverlay();></span>
             <ul>
                 <li><a href=#homepage>Homepage</a></li>
                 <li><a href=#eventsPage>Events</a></li>
@@ -54,4 +67,5 @@
         </section>
     </body>
     <footer>&copy; 2016</footer>
+</div>
 </html>

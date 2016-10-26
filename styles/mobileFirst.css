@@ -1,18 +1,28 @@
-html{
-    width:100%;
-    text-align: center;
+div#overlay{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-color: #fff;
+    color: #f24b4b;
 }
 header{
     padding:10px;
-    background-color: #f00;
-    color:#000;
+    background-color: #13042b;
+    color:#fff;
+    height:100%;
 }
 body{
+    width:100%;
+    text-align: center;
     margin:0;
     padding:0;
-    width:100%;
+    height:100%;
 }
-nav img{
+#navButton{
+    font-size:48px;
+    color:#fff;
     float:right;
     position:fixed;
     top:20px;
@@ -31,15 +41,15 @@ section, footer{
     text-align: center;
 }
 section{
-    height:500px;
+    height:100%;
     padding:10px;
 }
 #eventsPage{
-    background-color: #0f0;
-    color: #000;
+    background-color: #f24b4b;
+    color: #fff;
 }
 #contactPage{
-    background-color: #00f;
+    background-color: #6bd6f1;
     color: #fff;
 }
 #contactForm ul li{
@@ -47,6 +57,7 @@ section{
 }
 footer{
     padding:10px;
-    background-color: #000;
+    background-color: #f24b4b;
     color: #fff;
+    height:25%;
 }
