@@ -1,71 +1,36 @@
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
+    <script type="text/javascript" src="scripts/openOverlay.js"></script>
+    <script type="text/javascript" src="scripts/closeOverlay.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Events Site</title>
-    <link rel="stylesheet" href="fonts/Font-Awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/Font-Awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles/mobileFirst.css" media="screen" title="no title">
-    <script>
-    function toggleOverlay(){
-        var overlay = document.getElementById('overlay');
-        if(overlay.style.display == "block"){
-            overlay.style.display = "none";
-        } else {
-            overlay.style.display = "block";
-        }
-    }
-    </script>
+    <link rel="stylesheet" href="styles/desktop.css" media="screen" title="no title">
 </head>
 <body>
-    <div id="overlay">
+    <span id=openOverlay class="fa fa-bars fa-3x" onclick=openOverlay();></span>
+    <span id=closeOverlay class="fa fa-times fa-3x" onclick=closeOverlay();></span>
+    <div id="mobileOverlay"> //change to overlay when editing desktop nav 
         <nav>
-            <span id=navButton class="fa fa-bars" onclick=toggleOverlay();></span>
             <ul>
-                <li><a href=#homepage>Homepage</a></li>
-                <li><a href=#eventsPage>Events</a></li>
-                <li><a href=#contactPage>Contact Us</a></li>
+                <li><a href=#homepage onclick=closeOverlay()>Homepage</a></li>
+                <li><a href=#eventsPage onclick=closeOverlay()>Events</a></li>
+                <li><a href=#contactPage onclick=closeOverlay()>Contact Us</a></li>
             </ul>
         </nav>
+    </div>
         <header id="homepage">
             <h2>Homepage</h2>
-            <h3>placeholder</h3>
         </header>
         <section id="eventsPage">
             <h2>Events page</h2>
-            <h3>placeholder</h3>
-            <article>
-                Event placeholder
-            </article>
-            <article>
-                Event placeholder
-            </article>
-            <article>
-                Event placeholder
-            </article>
         </section>
         <section id="contactPage">
             <h2>Contact page</h2>
-            <h3>placeholder</h3>
-            <form id="contactForm" action="index.php" method="post">
-                <ul>
-                    <li>
-                        <label for="placeholder1">Placeholder</label>
-                        <input type="text" name="placeholder1" value="Placeholder 1">
-                    </li>
-                    <li>
-                        <label for="placeholder2">Placeholder</label>
-                        <input type="text" name="placeholder2" value="Placeholder 2">
-                    </li>
-                    <li>
-                        <label for="placeholder3">Placeholder</label>
-                        <input type="text" name="placeholder3" value="Placeholder 3">
-                    </li>
-                    <li><input type="submit" name="submit" value="Submit"></li>
-                </ul>
-            </form>
         </section>
     </body>
-    <footer>&copy; 2016</footer>
-</div>
+    <footer id = "footer">&copy; 2016</footer>
 </html>
