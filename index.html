@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Events Site</title>
     <link rel="stylesheet" href="fonts/Font-Awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/mobileFirst.css" media="screen" title="no title">
-    <link rel="stylesheet" href="styles/desktop.css" media="screen" title="no title">
+    <link rel="stylesheet" href="styles/base.css" media="screen" title="no title">
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)" title="no title">
+    <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 1025px)" title="no title">
 </head>
 <body>
     <span id=openOverlay class="fa fa-bars fa-3x" onclick=openOverlay();></span>
     <span id=closeOverlay class="fa fa-times fa-3x" onclick=closeOverlay();></span>
-    <div id="mobileOverlay"> <!--change to overlay when editing desktop nav-->
+    <div id="navLinks">
         <nav>
             <ul>
                 <li><a href=#homepage onclick=closeOverlay()>Homepage</a></li>
