@@ -6,16 +6,16 @@ body{
 }
 #homepage{
     height:500px;
-    background-color: rgba(0,0,0,0.3);
+    background-color: #13042b;
     padding:10px;
 }
 #eventsPage{
     height:500px;
     padding:10px;
-    background-color: rgba(0,0,0,0.5);
+    background-color: #f24b4b;
 }
 #contactPage{
     height:500px;
     padding:10px;
-    background-color: rgba(0,0,0,0.8);
+    background-color: #6bd6f1;
 }
