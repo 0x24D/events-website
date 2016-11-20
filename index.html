@@ -1,36 +1,69 @@
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
-    <script type="text/javascript" src="scripts/overlay.js"></script>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Events Site</title>
-    <link rel="stylesheet" href="fonts/Font-Awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/base.css" media="screen" title="no title">
-    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)" title="no title">
-    <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 1025px)" title="no title">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/base.css" media="screen">
+    <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 1025px)">
+<link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="scripts/html5shiv.min.js"></script>
+    <![endif]-->
+    <title>UK Events Site</title>
 </head>
 <body>
-    <span id=openOverlay class="fa fa-bars fa-3x" onclick=openOverlay();></span>
-    <span id=closeOverlay class="fa fa-times fa-3x" onclick=closeOverlay();></span>
+    <span id=openOverlay class="fa fa-bars fa-3x"></span> <!--add ie7 bars class-->
+    <span id=closeOverlay class="fa fa-times fa-3x"></span> <!-- add ie7 minus class-->
     <div id="navLinks">
         <nav>
             <ul>
-                <li><a href=#homepage onclick=closeOverlay()>Homepage</a></li>
-                <li><a href=#eventsPage onclick=closeOverlay()>Events</a></li>
-                <li><a href=#contactPage onclick=closeOverlay()>Contact Us</a></li>
+                <li><a href=#homepage class="navLink">Homepage</a></li>
+                <li><a href=#eventsPage class="navLink">Events</a></li>
+                <li><a href=#contactPage class="navLink">Contact Us</a></li>
             </ul>
         </nav>
     </div>
-        <header id="homepage">
-            <h2>Homepage</h2>
-        </header>
-        <section id="eventsPage">
-            <h2>Events page</h2>
-        </section>
-        <section id="contactPage">
-            <h2>Contact page</h2>
-        </section>
-    </body>
-    <footer id = "footer">&copy; 2016</footer>
+    <header id="homepage">
+        <h2>Homepage</h2>
+    </header>
+    <section id="eventsPage">
+        <h2>Events page</h2>
+    </section>
+    <section id="contactPage">
+        <h2>Contact page</h2>
+        <form class="" action="index.html" method="post">
+            <label for="name">Name: </label>
+            <input type="text" name="name" placeholder="Please enter your name..."><br>
+            <label for="email">Email address: </label>
+            <input type="email" name="email" placeholder="Please enter your email address..."><br>
+            <label for="message">Message: </label>
+            <textarea name="message" rows="8" cols="40" placeholder="Please enter your message..."></textarea><br><br>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+    </section>
+    <footer id = "footer">
+        <p>&copy; 2016</p>
+    </footer>
+    <script type="text/javascript" src="scripts/overlay.js"></script>
+    <script type="text/javascript">
+    document.getElementById("openOverlay").onclick = function(){
+        openOverlay();
+    }
+    document.getElementById("closeOverlay").onclick = function(){
+        closeOverlay();
+    }
+    var numNav = document.querySelectorAll(".navLink");
+    var numNavLength = numNav.length;
+    for (var i = 0; i <numNavLength; i++) {
+        numNav[i].addEventListener("click",function(){
+            closeOverlay();
+        })
+    }
+    </script>
+</body>
 </html>
