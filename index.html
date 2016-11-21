@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1">
-
     <link rel="stylesheet" href="styles/base.css" media="screen">
     <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 1025px)">
-<link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--[if IE 7]>
     <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
@@ -17,8 +16,8 @@
     <title>UK Events Site</title>
 </head>
 <body>
-    <span id=openOverlay class="fa fa-bars fa-3x"></span> <!--add ie7 bars class-->
-    <span id=closeOverlay class="fa fa-times fa-3x"></span> <!-- add ie7 minus class-->
+    <span id=openOverlay class="fa fa-bars fa-3x icon-reorder icon-3x"></span>
+    <span id=closeOverlay class="fa fa-times fa-3x icon-remove icon-3x"></span>
     <div id="navLinks">
         <nav>
             <ul>
@@ -29,20 +28,18 @@
         </nav>
     </div>
     <header id="homepage">
-        <h2>Homepage</h2>
+        <h1>UK Events</h1>
     </header>
     <section id="eventsPage">
         <h2>Events page</h2>
     </section>
     <section id="contactPage">
-        <h2>Contact page</h2>
+        <h1>We'd love to hear from you!</h1>
         <form class="" action="index.html" method="post">
-            <label for="name">Name: </label>
-            <input type="text" name="name" placeholder="Please enter your name..."><br>
-            <label for="email">Email address: </label>
-            <input type="email" name="email" placeholder="Please enter your email address..."><br>
-            <label for="message">Message: </label>
-            <textarea name="message" rows="8" cols="40" placeholder="Please enter your message..."></textarea><br><br>
+            <input type="text" name="name" placeholder="Name"><br>
+            <input type="email" name="email" placeholder="Email address"><br>
+            <input type="text" name="subject" placeholder="Subject"><br>
+            <textarea name="message" rows="8" cols="40" placeholder="Message"></textarea><br><br>
             <input type="submit" name="submit" value="Submit">
         </form>
     </section>

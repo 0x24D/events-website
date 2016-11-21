@@ -5,17 +5,19 @@ body{
     margin:0;
 }
 #homepage{
-    height:500px;
+    min-height: 100vh;
     background-color: #13042b;
     padding:10px;
+    color: #fff;
+    text-align: center;
 }
 #eventsPage{
-    height:500px;
+    min-height: 100vh;
     padding:10px;
     background-color: #f24b4b;
 }
 #contactPage{
-    height:500px;
+    min-height: 100vh;
     padding:10px;
     background-color: #6bd6f1;
 }
