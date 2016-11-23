@@ -1,3 +1,8 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+require_once("includes/conn.inc.php");
+?>
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
@@ -32,6 +37,17 @@
     </header>
     <section id="eventsPage">
         <h2>Events page</h2>
+
+        <table>
+            <tr>
+                <th>City</th>
+                <th>Area</th>
+                <th>Country</th>
+            </tr>
+            <?php
+            include("includes/events.inc.php");
+            ?>
+        </table>
     </section>
     <section id="contactPage">
         <h1>We'd love to hear from you!</h1>
@@ -54,7 +70,7 @@
     document.getElementById("closeOverlay").onclick = function(){
         closeOverlay();
     }
-    var numNav = document.querySelectorAll(".navLink");
+    var numNav = document.querySelectorAll(".navLink"); /*doesn't work in IE8*/
     var numNavLength = numNav.length;
     for (var i = 0; i <numNavLength; i++) {
         numNav[i].addEventListener("click",function(){
