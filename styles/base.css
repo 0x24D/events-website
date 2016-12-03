@@ -6,7 +6,7 @@ body{
 }
 #homepage{
     min-height: 100vh;
-    background-color: #13042b;
+    background-color: #6d6875;
     padding:10px;
     color: #fff;
     text-align: center;
@@ -14,12 +14,13 @@ body{
 #eventsPage{
     min-height: 100vh;
     padding:10px;
-    background-color: #f24b4b;
+    background-color: #b5838d;
+
 }
 #contactPage{
     min-height: 100vh;
     padding:10px;
-    background-color: #6bd6f1;
+    background-color: #e5989b;
 }
 #navLinks li{
     list-style-type: none;
@@ -28,7 +29,7 @@ body{
     text-decoration: none;
 }
 footer{
-    background-color: #13042b;
+    background-color: #ffb4a2;
     padding:10px;
     text-align: center;
 }
