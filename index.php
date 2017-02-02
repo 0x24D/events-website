@@ -1,7 +1,6 @@
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-require_once("includes/conn.inc.php");
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -24,30 +23,28 @@ require_once("includes/conn.inc.php");
     <span id=openOverlay class="fa fa-bars fa-3x icon-reorder icon-3x"></span>
     <span id=closeOverlay class="fa fa-times fa-3x icon-remove icon-3x"></span>
     <div id="navLinks">
+        //
         <nav>
             <ul>
-                <li><a href=#homepage class="navLink">Homepage</a></li>
-                <li><a href=#eventsPage class="navLink">Events</a></li>
-                <li><a href=#contactPage class="navLink">Contact Us</a></li>
+                <li><a href=#homepage class="navLink">
+                    Homepage
+                </a></li>
+                <li><a href=#eventsPage class="navLink">
+                    Events
+                </a></li>
+                <li><a href=#contactPage class="navLink">
+                    Contact Us
+                </a></li>
             </ul>
         </nav>
+        //
     </div>
     <header id="homepage">
         <h1>UK Events</h1>
     </header>
     <section id="eventsPage">
         <h2>Events page</h2>
-
-        <table>
-            <tr>
-                <th>City</th>
-                <th>Area</th>
-                <th>Country</th>
-            </tr>
-            <?php
-            include("includes/events.inc.php");
-            ?>
-        </table>
+        <?php include("includes/events.inc.php");?>
     </section>
     <section id="contactPage">
         <h1>We'd love to hear from you!</h1>
@@ -60,9 +57,9 @@ require_once("includes/conn.inc.php");
         </form>
     </section>
     <footer id = "footer">
-        <p>&copy; 2016</p>
+        <p>&copy; 2017</p>
     </footer>
-    <script type="text/javascript" src="scripts/overlay.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
     <script type="text/javascript">
     document.getElementById("openOverlay").onclick = function(){
         openOverlay();
@@ -70,12 +67,19 @@ require_once("includes/conn.inc.php");
     document.getElementById("closeOverlay").onclick = function(){
         closeOverlay();
     }
-    var numNav = document.querySelectorAll(".navLink"); /*doesn't work in IE8*/
-    var numNavLength = numNav.length;
-    for (var i = 0; i <numNavLength; i++) {
-        numNav[i].addEventListener("click",function(){
-            closeOverlay();
-        })
+    if (window.matchMedia("(max-width: 1024px)")) {
+        var numNav = document.querySelectorAll(".navLink"); /*doesn't work in IE8*/
+        for (var i = 0; i < numNav.length; i++) {
+            numNav[i].addEventListener("click",function(){
+                closeOverlay();
+            })
+        }
+    }
+    document.getElementById("country").onchange = function(){
+        updateDropdown(this.id, "area"); //remove hardcoded parameter
+    }
+    document.getElementById("area").onchange = function(){
+        updateDropdown(this.id, "city"); //remove hardcoded parameter
     }
     </script>
 </body>

@@ -9,3 +9,8 @@ function closeOverlay(){
     document.getElementById("navLinks").style.display="none"
     document.getElementById("closeOverlay").style.display="none";
 }
+
+function updateDropdown(id, nextid){
+    var country = document.getElementById(id).value;
+    document.getElementById(nextid).disabled = false;
+}
