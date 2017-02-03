@@ -1,6 +1,8 @@
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
+require_once("includes/conn.inc.php");
+$countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -23,7 +25,6 @@ ini_set('display_startup_errors', 1);
     <span id=openOverlay class="fa fa-bars fa-3x icon-reorder icon-3x"></span>
     <span id=closeOverlay class="fa fa-times fa-3x icon-remove icon-3x"></span>
     <div id="navLinks">
-        //
         <nav>
             <ul>
                 <li><a href=#homepage class="navLink">
@@ -37,14 +38,61 @@ ini_set('display_startup_errors', 1);
                 </a></li>
             </ul>
         </nav>
-        //
     </div>
     <header id="homepage">
         <h1>UK Events</h1>
     </header>
     <section id="eventsPage">
         <h2>Events page</h2>
-        <?php include("includes/events.inc.php");?>
+        <table>
+            <tr>
+                <th>Country</th>
+                <th>Area</th>
+                <th>City</th>
+                <th>Records</th>
+            </tr>
+            <tr>
+                <td>
+                    <select name="country" id="country">
+                        <option value="base" selected>-</option>
+                        <?php
+                        foreach($pdo->query($countrysql) as $row) {
+                            ?>
+                            <option value=<?php echo$row['country'];?>><?php echo$row['country'];?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </td>
+                <td>
+                    <div id="areaList">
+                        <select name="area" id="area" disabled>
+                            <option value="base" selected>-</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div id="cityList">
+                    <select name="city" id="city" disabled>
+                        <option value="base" selected>-</option>
+                        <div id="cityList"></div>
+                    </select>
+                </div>
+                </td>
+                <td>
+                    <select name="records" id="records">
+                    <option value="25" selected>25</option>
+                    <option value="50">50</option>
+                    <option value="75">75</option>
+                    <option value="100">100</option>
+                </select>
+                </td>
+                <td>
+                    <input type="submit" name="search" id="search" class="fa" value="&#xf002;">
+                </td>
+            </tr>
+        </table>
+
     </section>
     <section id="contactPage">
         <h1>We'd love to hear from you!</h1>
@@ -59,8 +107,9 @@ ini_set('display_startup_errors', 1);
     <footer id = "footer">
         <p>&copy; 2017</p>
     </footer>
-    <script type="text/javascript" src="scripts/script.js"></script>
-    <script type="text/javascript">
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
     document.getElementById("openOverlay").onclick = function(){
         openOverlay();
     }
@@ -76,10 +125,10 @@ ini_set('display_startup_errors', 1);
         }
     }
     document.getElementById("country").onchange = function(){
-        updateDropdown(this.id, "area"); //remove hardcoded parameter
+        updateDropdown(this.id, "area"); //remove hardcoded parameters
     }
     document.getElementById("area").onchange = function(){
-        updateDropdown(this.id, "city"); //remove hardcoded parameter
+        updateDropdown(this.id, "city"); //remove hardcoded parameters
     }
     </script>
 </body>
