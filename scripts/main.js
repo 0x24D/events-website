@@ -11,13 +11,15 @@ function closeOverlay(){
 }
 
 function updateDropdown(dropdown, nextDropdown){
-    console.log(dropdown + " update");
-        $.ajax({
-            url:"populateDropdown.php",
-            type:"POST",
-            data: {current: dropdown, next: nextDropdown, selected: document.getElementById(dropdown).value, selectedCountry: document.getElementById("country").value},
-            success:function(data){
-                $("#" + nextDropdown + "List").html(data);
-            }
-        });
+    if ((dropdown == "country") && (($("#city").value != "base") || ($("#cityList").value != "-"))) {
+        $("#cityList").html('<select name="city" id="city"> <option value="base" selected>-</option> </select>');
+    }
+    $.ajax({
+        url:"populateDropdown.php",
+        type:"POST",
+        data: {current: dropdown, next: nextDropdown, selected: document.getElementById(dropdown).value, selectedCountry: document.getElementById("country").value},
+        success:function(data){
+            $("#" + nextDropdown + "List").html(data);
+        }
+    });
 }
