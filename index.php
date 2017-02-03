@@ -66,14 +66,14 @@ $countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
                 </td>
                 <td>
                     <div id="areaList">
-                        <select name="area" id="area" disabled>
+                        <select name="area" id="area">
                             <option value="base" selected>-</option>
                         </select>
                     </div>
                 </td>
                 <td>
                     <div id="cityList">
-                    <select name="city" id="city" disabled>
+                    <select name="city" id="city">
                         <option value="base" selected>-</option>
                         <div id="cityList"></div>
                     </select>
@@ -88,11 +88,10 @@ $countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
                 </select>
                 </td>
                 <td>
-                    <input type="submit" name="search" id="search" class="fa" value="&#xf002;">
+                    <input type="submit" name="searchEvents" id="searchEvents" class="fa" value="&#xf002;">
                 </td>
             </tr>
         </table>
-
     </section>
     <section id="contactPage">
         <h1>We'd love to hear from you!</h1>
@@ -129,6 +128,10 @@ $countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
     }
     document.getElementById("areaList").onchange = function(){
         updateDropdown("area", "city"); //remove hardcoded parameters
+    }
+    document.getElementById("searchEvents").onclick = function(){
+        console.log("City: " + document.getElementById("city").value + " Area: " + document.getElementById("area").value +
+                    " Country: " + document.getElementById("country").value + " Results: " + document.getElementById("records").value);
     }
     </script>
 </body>
