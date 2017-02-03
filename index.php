@@ -49,7 +49,7 @@ $countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
                 <th>Country</th>
                 <th>Area</th>
                 <th>City</th>
-                <th>Records</th>
+                <th>No. of Records</th>
             </tr>
             <tr>
                 <td>
@@ -58,7 +58,7 @@ $countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
                         <?php
                         foreach($pdo->query($countrysql) as $row) {
                             ?>
-                            <option value=<?php echo$row['country'];?>><?php echo$row['country'];?></option>
+                            <option value=<?php echo $row['country'];?>><?php echo str_replace("_", " ", $row['country']);?></option>
                             <?php
                         }
                         ?>
@@ -127,8 +127,8 @@ $countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
     document.getElementById("country").onchange = function(){
         updateDropdown(this.id, "area"); //remove hardcoded parameters
     }
-    document.getElementById("area").onchange = function(){
-        updateDropdown(this.id, "city"); //remove hardcoded parameters
+    document.getElementById("areaList").onchange = function(){
+        updateDropdown("area", "city"); //remove hardcoded parameters
     }
     </script>
 </body>

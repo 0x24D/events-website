@@ -15,7 +15,7 @@ function updateDropdown(dropdown, nextDropdown){
         $.ajax({
             url:"populateDropdown.php",
             type:"POST",
-            data: {current: dropdown, next: nextDropdown, selected: document.getElementById(dropdown).value},
+            data: {current: dropdown, next: nextDropdown, selected: document.getElementById(dropdown).value, selectedCountry: document.getElementById("country").value},
             success:function(data){
                 $("#" + nextDropdown + "List").html(data);
             }
