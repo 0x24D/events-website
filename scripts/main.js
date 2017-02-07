@@ -1,28 +1,28 @@
 function openOverlay(){
-    document.getElementById("openOverlay").style.display="none"
-    document.getElementById("navLinks").style.display="block"
-    document.getElementById("closeOverlay").style.display="block";
+    document.getElementById('openOverlay').style.display='none'
+    document.getElementById('navLinks').style.display='block'
+    document.getElementById('closeOverlay').style.display='block';
 }
 
 function closeOverlay(){
-    document.getElementById("openOverlay").style.display="block"
-    document.getElementById("navLinks").style.display="none"
-    document.getElementById("closeOverlay").style.display="none";
+    document.getElementById('openOverlay').style.display='block'
+    document.getElementById('navLinks').style.display='none'
+    document.getElementById('closeOverlay').style.display='none';
 }
 
 function updateDropdown(dropdown, nextDropdown){
-    if ((dropdown == "country") && ($("#city").value != "base")) {
-        $("#cityList").html('<select name="city" id="city"> <option value="base" selected>-</option> </select>');
+    if ((dropdown == 'country') && ($('#city').value != 'base')) {
+        $('#cityList').html('<select name='city' id='city'> <option value='base' selected>-</option> </select>');
     }
     $.ajax({
-        url:"populateDropdown.php",
-        type:"POST",
+        url:'populateDropdown.php',
+        type:'POST',
         data: {current: dropdown,
                 next: nextDropdown,
                 selected: document.getElementById(dropdown).value,
-                selectedCountry: document.getElementById("country").value},
+                selectedCountry: document.getElementById('country').value},
         success:function(data){
-            $("#" + nextDropdown + "List").html(data);
+            $('#' + nextDropdown + 'List').html(data);
         },
         error: function(e) {
             console.error(e);
@@ -32,8 +32,8 @@ function updateDropdown(dropdown, nextDropdown){
 
 function getRecords(){
     $.ajax({
-        url:"getRecords.php",
-        type:"POST",
+        url:'getRecords.php',
+        type:'POST',
         data: {city: document.getElementById('city').value,
                 area: document.getElementById('area').value,
                 country: document.getElementById('country').value,

@@ -3,19 +3,17 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 //sql
 require_once('includes/conn.inc.php');
-$city = $_POST['city'];
-$area = $_POST['area'];
-$country = $_POST['country'];
+
 $radius = $_POST['radius'];
 $records = $_POST['records'];
-$sql = 'SELECT latitude, longitude FROM cities WHERE city ="' . $city .'" && area ="' . $area . '" && country ="' . $country . '";';
+$sql = 'SELECT latitude, longitude FROM cities WHERE city ="' . $_POST['city'] .'" && area ="' . $_POST['area'] . '" && country ="' . $_POST['country'] . '";';
 $stmt = $pdo->query($sql);
 $row =$stmt->fetchObject();
 $latitude = $row->latitude;
 $longitude = $row->longitude;
 //json
 require_once('includes/skiddle.inc.php');
-$json_url = $eventsEndpoint.'?api_key='.$apiKey.'&latitude='.$latitude.'&longitude='.$longitude.'&radius='.$radius.'&limit='.$records;
+$json_url = $eventsEndpoint.'?api_key='.$apiKey.'&latitude='.$latitude.'&longitude='.$longitude.'&radius='.$_POST['radius'].'&limit='.$_POST['records'];
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $json_url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -44,7 +42,7 @@ if($result === false || curl_error($ch)) {
 </tr>
 <br/>
 <?php
-  for ($i=0; $i < $records; $i++) { //number of records from dropdown list
+  for ($i=0; $i < $_POST['records']; $i++) { //number of records from dropdown list
       ?>
       <tr>
       <td><?php echo $json['results'][$i]['eventname']?></td>
@@ -63,7 +61,7 @@ if($result === false || curl_error($ch)) {
   ?>
   <tr>
       <?php
-      for ($i=0; $i < $json['totalcount']; $i += $records) {
+      for ($i=0; $i < $json['totalcount']; $i += $_POST['records']) {
           $page = 1;
           ?> <a href="#"> <?php echo $page; ?></a>
           <?php
