@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 require_once("includes/conn.inc.php");
-$countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
+$sql= "SELECT DISTINCT country FROM cities ORDER BY country";
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -56,7 +56,7 @@ $countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
                     <select name="country" id="country">
                         <option value="base" selected>-</option>
                         <?php
-                        foreach($pdo->query($countrysql) as $row) {
+                        foreach($pdo->query($sql) as $row) {
                             ?>
                             <option value=<?php echo $row['country'];?>><?php echo str_replace("_", " ", $row['country']);?></option>
                             <?php
@@ -92,6 +92,8 @@ $countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
                 </td>
             </tr>
         </table>
+        <table id = "eventsRecords">
+        </table>
     </section>
     <section id="contactPage">
         <h1>We'd love to hear from you!</h1>
@@ -99,7 +101,7 @@ $countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
             <input type="text" name="name" placeholder="Name"><br>
             <input type="email" name="email" placeholder="Email address"><br>
             <input type="text" name="subject" placeholder="Subject"><br>
-            <textarea name="message" rows="8" cols="40" placeholder="Message"></textarea><br><br>
+            <textarea name="message" id="message" rows="8" cols="40" placeholder="Message"></textarea><br><br>
             <input type="submit" name="submit" value="Submit">
         </form>
     </section>
@@ -132,6 +134,7 @@ $countrysql= "SELECT DISTINCT country FROM cities ORDER BY country";
     document.getElementById("searchEvents").onclick = function(){
         console.log("City: " + document.getElementById("city").value + " Area: " + document.getElementById("area").value +
                     " Country: " + document.getElementById("country").value + " Results: " + document.getElementById("records").value);
+                    getRecords();
     }
     </script>
 </body>
