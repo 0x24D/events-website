@@ -3,9 +3,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 //sql
 require_once('includes/conn.inc.php');
-
-$radius = $_POST['radius'];
-$records = $_POST['records'];
 $sql = 'SELECT latitude, longitude FROM cities WHERE city ="' . $_POST['city'] .'" && area ="' . $_POST['area'] . '" && country ="' . $_POST['country'] . '";';
 $stmt = $pdo->query($sql);
 $row =$stmt->fetchObject();
@@ -28,33 +25,20 @@ if($result === false || curl_error($ch)) {
 } else {
   curl_close($ch);
   $json = json_decode($result, true);
-?>
-<tr>
-<th>Event</th>
-<th>Venue</th>
-<th>Address</th>
-<th>Town</th>
-<th>Postcode</th>
-<th>Date</th>
-<th>Open</th>
-<th>Last entry</th>
-<th>Close</th>
-</tr>
-<br/>
-<?php
-  for ($i=0; $i < $_POST['records']; $i++) { //number of records from dropdown list
+
+  for ($i=0; $i < $_POST['records']; $i++) {
       ?>
-      <tr>
-      <td><?php echo $json['results'][$i]['eventname']?></td>
-      <td><?php echo $json['results'][$i]['venue']['name']?></td>
-      <td><?php echo $json['results'][$i]['venue']['address']?></td>
-      <td><?php echo $json['results'][$i]['venue']['town']?></td>
-      <td><?php echo strtoupper($json['results'][$i]['venue']['postcode'])?></td> //force uppercase
-      <td><?php echo date("d-m-Y", strtotime($json['results'][$i]['date'])); ?></td> //change date format
-      <td><?php echo $json['results'][$i]['openingtimes']['doorsopen']?></td>
-      <td><?php echo $json['results'][$i]['openingtimes']['lastentry']?></td>
-      <td><?php echo $json['results'][$i]['openingtimes']['doorsclose']?></td>
-  </tr>
+        <p>
+        Event: <?php echo $json['results'][$i]['eventname']?><br>
+        Venue: <?php echo $json['results'][$i]['venue']['name']?><br>
+        Address: <?php echo $json['results'][$i]['venue']['address']?>
+        <?php echo $json['results'][$i]['venue']['town']?>
+        <?php echo strtoupper($json['results'][$i]['venue']['postcode'])?><br>
+        Date: <?php echo date("d-m-Y", strtotime($json['results'][$i]['date'])); ?><br>
+        Doors open: <?php echo $json['results'][$i]['openingtimes']['doorsopen']?>
+        Last entry: <?php echo $json['results'][$i]['openingtimes']['lastentry']?>
+        Doors close: <?php echo $json['results'][$i]['openingtimes']['doorsclose']?>
+        </p>
   <br/>
       <?php
   }
