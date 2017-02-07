@@ -37,7 +37,6 @@ if($result === false || curl_error($ch)) {
 <th>Address</th>
 <th>Town</th>
 <th>Postcode</th>
-<th>Country</th>
 <th>Date</th>
 <th>Open</th>
 <th>Last entry</th>
@@ -52,9 +51,8 @@ if($result === false || curl_error($ch)) {
       <td><?php echo $json['results'][$i]['venue']['name']?></td>
       <td><?php echo $json['results'][$i]['venue']['address']?></td>
       <td><?php echo $json['results'][$i]['venue']['town']?></td>
-      <td><?php echo $json['results'][$i]['venue']['postcode']?></td>
-      <td><?php echo $json['results'][$i]['venue']['country']?></td>
-      <td><?php echo date("d-m-Y", strtotime($json['results'][$i]['date'])); ?></td>
+      <td><?php echo strtoupper($json['results'][$i]['venue']['postcode'])?></td> //force uppercase
+      <td><?php echo date("d-m-Y", strtotime($json['results'][$i]['date'])); ?></td> //change date format
       <td><?php echo $json['results'][$i]['openingtimes']['doorsopen']?></td>
       <td><?php echo $json['results'][$i]['openingtimes']['lastentry']?></td>
       <td><?php echo $json['results'][$i]['openingtimes']['doorsclose']?></td>
@@ -63,6 +61,16 @@ if($result === false || curl_error($ch)) {
       <?php
   }
   ?>
+  <tr>
+      <?php
+      for ($i=0; $i < $json['totalcount']; $i += $records) {
+          $page = 1;
+          ?> <a href="#"> <?php echo $page; ?></a>
+          <?php
+          $page++;
+      }
+       ?>
+  </tr>
 <?php
 }
 ?>
