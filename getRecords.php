@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 //sql
 require_once('includes/conn.inc.php');
 $sql = 'SELECT latitude, longitude FROM cities WHERE city ="' . $_POST['city'] .'" && area ="' . $_POST['area'] . '" && country ="' . $_POST['country'] . '";';
@@ -21,38 +19,43 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 curl_setopt($ch, CURLOPT_HEADER, false);
 $result =  curl_exec($ch);
 if($result === false || curl_error($ch)) {
-   curl_close($ch);
+    curl_close($ch);
 } else {
-  curl_close($ch);
-  $json = json_decode($result, true);
+    curl_close($ch);
+    $json = json_decode($result, true);
 
-  for ($i=0; $i < $_POST['records']; $i++) {
-      ?>
-        <p>
-        Event: <?php echo $json['results'][$i]['eventname']?><br>
-        Venue: <?php echo $json['results'][$i]['venue']['name']?><br>
-        Address: <?php echo $json['results'][$i]['venue']['address']?>
-        <?php echo $json['results'][$i]['venue']['town']?>
-        <?php echo strtoupper($json['results'][$i]['venue']['postcode'])?><br>
-        Date: <?php echo date("d-m-Y", strtotime($json['results'][$i]['date'])); ?><br>
-        Doors open: <?php echo $json['results'][$i]['openingtimes']['doorsopen']?>
-        Last entry: <?php echo $json['results'][$i]['openingtimes']['lastentry']?>
-        Doors close: <?php echo $json['results'][$i]['openingtimes']['doorsclose']?>
-        </p>
-  <br/>
-      <?php
-  }
-  ?>
-  <tr>
-      <?php
-      for ($i=0; $i < $json['totalcount']; $i += $_POST['records']) {
-          $page = 1;
-          ?> <a href="#"> <?php echo $page; ?></a>
-          <?php
-          $page++;
-      }
-       ?>
-  </tr>
-<?php
+    for ($i=0; $i < $_POST['records']; $i++) {
+        if(!empty($json['results'][$i])){
+        ?>
+            <p>
+                Event: <?php echo $json['results'][$i]['eventname']?><br>
+                Venue: <?php echo $json['results'][$i]['venue']['name']?><br>
+                Address: <?php echo $json['results'][$i]['venue']['address']?>
+                Town: <?php echo $json['results'][$i]['venue']['town']?>
+                Postcode: <?php echo strtoupper($json['results'][$i]['venue']['postcode'])?><br>
+                Date: <?php echo date("d-m-Y", strtotime($json['results'][$i]['date'])); ?><br>
+                Doors open: <?php echo $json['results'][$i]['openingtimes']['doorsopen']?>
+                Last entry: <?php echo $json['results'][$i]['openingtimes']['lastentry']?>
+                Doors close: <?php echo $json['results'][$i]['openingtimes']['doorsclose']?>
+            </p>
+            <br/>
+            <?php
+            elseif ($i == 0) {
+                ?><p><?php echo 'No events found.' ?></p>
+        <?php}
+        }
+    }?>
+
+    <tr>
+        <?php
+        $page = 1;
+        for ($i=0; $i < $json['totalcount']; $i += $_POST['records']) {
+            ?> <a href="#"> <?php echo $page; ?></a>
+            <?php
+            $page++;
+        }
+        ?>
+    </tr>
+    <?php
 }
 ?>
