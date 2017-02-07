@@ -12,7 +12,7 @@ function closeOverlay(){
 
 function updateDropdown(dropdown, nextDropdown){
     if ((dropdown == 'country') && ($('#city').value != 'base')) {
-        $('#cityList').html('<select name='city' id='city'> <option value='base' selected>-</option> </select>');
+        $('#cityList').html("<select name='city' id='city'> <option value='base' selected>-</option> </select>");
     }
     $.ajax({
         url:'populateDropdown.php',

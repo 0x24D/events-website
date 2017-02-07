@@ -1,18 +1,14 @@
 <?php
 require_once('includes/conn.inc.php');
-$currentDropdown = $_POST['current'];
-$nextDropdown = $_POST['next'];
-$selected = $_POST['selected'];
-$selectedCountry = $_POST['selectedCountry'];
-if ($_POST['current'] == 'country') {
-    $sql= 'SELECT DISTINCT ' . $_POST['next'] . ' FROM cities WHERE ' . $_POST['current'] . ' = "' . $_POST['selected'] . '" ORDER BY ' . $_POST['next'] . ';';
+if ($_POST['current'] == "country") {
+    $sql= "SELECT DISTINCT " . $_POST['next'] . " FROM cities WHERE " . $_POST['current'] . " = '" . $_POST['selected'] . "' ORDER BY " . $_POST['next'] . ";";
 }
 else {
-    $sql= 'SELECT DISTINCT ' . $_POST['next'] . ' FROM cities WHERE ' . $_POST['current'] . ' = "' . $_POST['selected'] . '" AND country = "' . $_POST['selectedCountry'] .'" ORDER BY ' . $_POST['selectedCountry'] . ';';
+    $sql= "SELECT DISTINCT " . $_POST['next'] . " FROM cities WHERE " . $_POST['current'] . " = '" . $_POST['selected'] . "' AND country = '" . $_POST['selectedCountry'] ."' ORDER BY " . $_POST['next'] . ";";
 }
 ?>
- <select name='<?php echo $_POST['next']?>' id='<?php echo $_POST['next']?>'>
-    <option value='base' selected>-</option>
+ <select name="<?php echo $_POST['next']?>" id="<?php echo $_POST['next']?>">
+    <option value="base" selected>-</option>
     <?php
 foreach($pdo->query($sql) as $row) {
     ?>
