@@ -17,7 +17,10 @@ function updateDropdown(dropdown, nextDropdown){
     $.ajax({
         url:"populateDropdown.php",
         type:"POST",
-        data: {current: dropdown, next: nextDropdown, selected: document.getElementById(dropdown).value, selectedCountry: document.getElementById("country").value},
+        data: {current: dropdown,
+                next: nextDropdown,
+                selected: document.getElementById(dropdown).value,
+                selectedCountry: document.getElementById("country").value},
         success:function(data){
             $("#" + nextDropdown + "List").html(data);
         },
@@ -31,6 +34,11 @@ function getRecords(){
     $.ajax({
         url:"getRecords.php",
         type:"POST",
+        data: {city: document.getElementById('city').value,
+                area: document.getElementById('area').value,
+                country: document.getElementById('country').value,
+                radius: document.getElementById('radius').value,
+                records: document.getElementById('records').value},
         success:function(data){
             $('#eventsRecords').html(data);
         },

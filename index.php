@@ -49,6 +49,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
                 <th>Country</th>
                 <th>Area</th>
                 <th>City</th>
+                <th>Radius (miles)</th>
                 <th>No. of Records</th>
             </tr>
             <tr>
@@ -79,6 +80,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
                     </select>
                 </div>
                 </td>
+                <td><input type="number" name="radius" id="radius" required></td>
                 <td>
                     <select name="records" id="records">
                     <option value="25" selected>25</option>

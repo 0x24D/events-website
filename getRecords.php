@@ -1,26 +1,29 @@
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-
+//sql
+require_once('includes/conn.inc.php');
+$city = $_POST['city'];
+$area = $_POST['area'];
+$country = $_POST['country'];
+$radius = $_POST['radius'];
+$records = $_POST['records'];
+$sql = 'SELECT latitude, longitude FROM cities WHERE city ="' . $city .'" && area ="' . $area . '" && country ="' . $country . '";';
+$stmt = $pdo->query($sql);
+$row =$stmt->fetchObject();
+$latitude = $row->latitude;
+$longitude = $row->longitude;
+//json
 require_once('includes/skiddle.inc.php');
-$json_url = $eventsEndpoint.'?api_key='.$apiKey;
-// echo $eventsEndpoint;
-// echo '?api_key=';
-// echo $apiKey;
-// $headers = array();
-// $headers[] = 'Content-type: application/json';
-// $headers[] = 'X-HTTP-Method-Override: GET';
-// echo $headers;
+$json_url = $eventsEndpoint.'?api_key='.$apiKey.'&latitude='.$latitude.'&longitude='.$longitude.'&radius='.$radius.'&limit='.$records;
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $json_url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//curl_setopt($ch, CURLOPT_HTTPHEADER, array($headers));
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-type: application/json',
     'X-HTTP-Method-Override: GET'
 ));
-curl_setopt($ch, CURLOPT_HEADER, 0);
-// Getting jSON result string
+curl_setopt($ch, CURLOPT_HEADER, false);
 $result =  curl_exec($ch);
 if($result === false || curl_error($ch)) {
    curl_close($ch);
@@ -42,7 +45,7 @@ if($result === false || curl_error($ch)) {
 </tr>
 <br/>
 <?php
-  for ($i=0; $i < 20; $i++) { //20 records by default
+  for ($i=0; $i < $records; $i++) { //number of records from dropdown list
       ?>
       <tr>
       <td><?php echo $json['results'][$i]['eventname']?></td>
@@ -51,7 +54,7 @@ if($result === false || curl_error($ch)) {
       <td><?php echo $json['results'][$i]['venue']['town']?></td>
       <td><?php echo $json['results'][$i]['venue']['postcode']?></td>
       <td><?php echo $json['results'][$i]['venue']['country']?></td>
-      <td><?php echo $json['results'][$i]['date']?></td>
+      <td><?php echo date("d-m-Y", strtotime($json['results'][$i]['date'])); ?></td>
       <td><?php echo $json['results'][$i]['openingtimes']['doorsopen']?></td>
       <td><?php echo $json['results'][$i]['openingtimes']['lastentry']?></td>
       <td><?php echo $json['results'][$i]['openingtimes']['doorsclose']?></td>
