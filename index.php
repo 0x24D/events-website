@@ -31,6 +31,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
                 <li><a href=#eventsPage class="navLink">
                     Events
                 </a></li>
+                <!--add link to CMS when admin logged in-->
                 <li><a href=#contactPage class="navLink">
                     Contact Us
                 </a></li>
@@ -105,13 +106,13 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
         toggleCMSPage();
     });
     $('editCMSLink').click(function(){
-        loadCMSEditPage('edit');
+        loadCMSEditPage('edit',this.id);
     });
     $('deleteCMSLink').click(function(){
-        loadCMSEditPage('delete');
+        loadCMSEditPage('delete',this.id);
     });
     $('viewCMSLink').click(function(){
-        loadCMSEditPage('view');
+        loadCMSEditPage('view',this.id);
     });
     $('addCMSLink').click(function(){
         loadCMSEditPage('add');

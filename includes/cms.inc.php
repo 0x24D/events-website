@@ -18,9 +18,9 @@ $stmt->execute();?>
     while($row = $stmt->fetchObject()){?>
     <tr>
     <td><?php echo str_replace('_', ' ', $row->city).','.str_replace('_', ' ', $row->area).','.str_replace('_', ' ', $row->country);?></td>
-    <td><a href="#" id="editCMSLink">Edit</a></td>
-    <td><a href="#" id="deleteCMSLink">Delete</a></td>
-    <td><a href="#" id="viewCMSLink">View</a></td>
+    <td><a href="#" id="editCMSLink" value=".<?php echo $row->id; ?>.">Edit</a></td>
+    <td><a href="#" id="deleteCMSLink" value=".<?php echo $row->id; ?>.">Delete</a></td>
+    <td><a href="#" id="viewCMSLink" value=".<?php echo $row->id; ?>.">View</a></td>
     </tr>
 <?php}
     ?>

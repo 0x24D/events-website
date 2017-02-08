@@ -68,22 +68,32 @@ function toggleCMSPage(){
         document.getElementById('cmsSection').style.display = 'none';
         document.getElementById('eventsSection').style.display = 'block';
 
-        if (document.getElementById('editCMSSection').style.display != 'none';) {
+        if (document.getElementById('editCMSSection').style.display != 'none') {
             document.getElementById('editCMSSection').style.display = 'none';
         }
-        else if (document.getElementById('deleteCMSSection').style.display != 'none';) {
+        else if (document.getElementById('deleteCMSSection').style.display != 'none') {
             document.getElementById('deleteCMSSection').style.display = 'none';
         }
-        else if (document.getElementById('viewCMSSection').style.display != 'none';) {
+        else if (document.getElementById('viewCMSSection').style.display != 'none') {
             document.getElementById('viewCMSSection').style.display = 'none';
         }
-        else if (document.getElementById('addCMSSection').style.display != 'none';) {
+        else if (document.getElementById('addCMSSection').style.display != 'none') {
             document.getElementById('addCMSSection').style.display = 'none';
         }
     }
 }
 
-function loadCMSSubPage(subpage){
+function loadCMSSubPage(subpage,linkID){
     document.getElementById('eventsSection').style.display = 'none';
     document.getElementById(subpage+'CMSSection').style.display = 'block';
+    $.ajax({
+    url: subpage+'.inc.php',
+    type: 'POST',
+    data: {
+        id: document.getElementById(linkID).value;
+    },
+    error: function(e) {
+        console.error(e);
+    }
+});
 }

@@ -1,4 +1,4 @@
-<h2>Events page</h2>
+<h2>Events Page</h2>
 <table>
     <tr>
         <td>Country</td>
