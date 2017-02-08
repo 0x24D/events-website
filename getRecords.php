@@ -40,22 +40,25 @@ if($result === false || curl_error($ch)) {
             </p>
             <br/>
             <?php
-            elseif ($i == 0) {
-                ?><p><?php echo 'No events found.' ?></p>
-        <?php}
         }
-    }?>
-
+        elseif ($i == 0) {
+                ?><p>No events found.</p><?php
+            }
+    }
+    if (!empty($json['results'][0])){ ?>
     <tr>
         <?php
         $page = 1;
         for ($i=0; $i < $json['totalcount']; $i += $_POST['records']) {
+            if ($page <= 10){
             ?> <a href="#"> <?php echo $page; ?></a>
             <?php
-            $page++;
+            }
+        $page++;
         }
         ?>
     </tr>
     <?php
+    }
 }
 ?>
