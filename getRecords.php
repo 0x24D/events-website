@@ -4,11 +4,59 @@ require_once('includes/conn.inc.php');
 $sql = 'SELECT latitude, longitude FROM cities WHERE city ="' . $_POST['city'] .'" && area ="' . $_POST['area'] . '" && country ="' . $_POST['country'] . '";';
 $stmt = $pdo->query($sql);
 $row =$stmt->fetchObject();
-$latitude = $row->latitude;
-$longitude = $row->longitude;
+$latitude = '&latitude='.$row->latitude;
+$longitude = '&longitude='.$row->longitude;
+//php functions
+function setDateStyle($date){
+    return (date("Y-m-d",strtotime($date)));
+}
+function setCheckboxValue($checkbox){
+    if ($checkbox == 'true') {
+        return '1';
+    }
+    else {
+        return '0';
+    }
+}
+function checkEmptyPostValue($value){
+    if ((empty($_POST[$value])) || $_POST[$value] == 'base') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 //json
 require_once('includes/skiddle.inc.php');
-$json_url = $eventsEndpoint.'?api_key='.$apiKey.'&latitude='.$latitude.'&longitude='.$longitude.'&radius='.$_POST['radius'].'&limit='.$_POST['records'];
+$radius='';
+$limit='';
+$order='';
+$eventCode='';
+$minDate='';
+$maxDate='';
+if (!checkEmptyPostValue('radius')) {
+    $radius = '&radius='.$_POST['radius'];
+}
+if (!checkEmptyPostValue('limit')) {
+    $limit = '&limit='.$_POST['records'];
+}
+if (!checkEmptyPostValue('order')) {
+    $order = '&order='.$_POST['order'];
+}
+if (!checkEmptyPostValue('eventCode')) {
+    $eventCode = '&eventcode='.$_POST['eventCode'];
+}
+if (!checkEmptyPostValue('minDate')) {
+    $minDate = '&minDate='.setDateStyle($_POST['minDate']);
+}
+if (!checkEmptyPostValue('maxDate')) {
+    $maxDate = '&maxDate='.setDateStyle($_POST['maxDate']);
+}
+$specialFeatured = '&specialFeatured='.setCheckboxValue($_POST['recommended']);
+$ticketsAvailable = '&ticketsavailable='.setCheckboxValue($_POST['tickets']);
+$under18 = '&under18='.setCheckboxValue($_POST['over18']);
+$json_url = $eventsEndpoint.$apiKey.$latitude.$longitude.$radius.$limit.$order.$eventCode.$minDate.$maxDate.$specialFeatured.$ticketsAvailable.$under18;
+echo $json_url;
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $json_url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

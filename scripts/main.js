@@ -38,7 +38,15 @@ function getRecords(){
                 area: document.getElementById('area').value,
                 country: document.getElementById('country').value,
                 radius: document.getElementById('radius').value,
-                records: document.getElementById('records').value},
+                records: document.getElementById('records').value,
+                order: document.getElementById('order').value,
+                eventCode: document.getElementById('eventCode').value,
+                minDate: document.getElementById('startDate').value,
+                maxDate: document.getElementById('endDate').value,
+                recommended: document.getElementById('recommendedEvents').checked,
+                tickets: document.getElementById('ticketsAvailable').checked,
+                over18: document.getElementById('over18').checked
+            },
         success:function(data){
             $('#eventsRecords').html(data);
         },

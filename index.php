@@ -107,7 +107,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
                     </select>
                 </td>
                 <td>
-                    <select name="eventCode">
+                    <select name="eventCode" id="eventCode">
                     <option value="base" selected>-</option>
                     <option value="ARTS">The Arts</option>
                     <option value="BARPUB">Bar/Pub event</option>
@@ -177,9 +177,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
         updateDropdown("area", "city"); //remove hardcoded parameters
     }
     document.getElementById("searchEvents").onclick = function(){
-        if (document.getElementById("endDate").value >= document.getElementById("startDate")) {
-            getRecords();
-        }
+        getRecords();
     }
     </script>
 </body>
