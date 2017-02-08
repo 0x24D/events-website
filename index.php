@@ -89,7 +89,6 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
         getRecords();
     });
     $('#adminButton').click(function(){
-        console.log('clicked');
         toggleCMSPage();
     });
     </script>
