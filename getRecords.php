@@ -56,7 +56,6 @@ $specialFeatured = '&specialFeatured='.setCheckboxValue($_POST['recommended']);
 $ticketsAvailable = '&ticketsavailable='.setCheckboxValue($_POST['tickets']);
 $under18 = '&under18='.setCheckboxValue($_POST['over18']);
 $json_url = $eventsEndpoint.$apiKey.$latitude.$longitude.$radius.$limit.$order.$eventCode.$minDate.$maxDate.$specialFeatured.$ticketsAvailable.$under18;
-echo $json_url;
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $json_url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -71,7 +70,6 @@ if($result === false || curl_error($ch)) {
 } else {
     curl_close($ch);
     $json = json_decode($result, true);
-
     for ($i=0; $i < $_POST['records']; $i++) {
         if(!empty($json['results'][$i])){
         ?>
@@ -82,9 +80,10 @@ if($result === false || curl_error($ch)) {
                 Town: <?php echo $json['results'][$i]['venue']['town']?>
                 Postcode: <?php echo strtoupper($json['results'][$i]['venue']['postcode'])?><br>
                 Date: <?php echo date("d-m-Y", strtotime($json['results'][$i]['date'])); ?><br>
-                Doors open: <?php echo $json['results'][$i]['openingtimes']['doorsopen']?>
-                Last entry: <?php echo $json['results'][$i]['openingtimes']['lastentry']?>
-                Doors close: <?php echo $json['results'][$i]['openingtimes']['doorsclose']?>
+                Doors open: <?php echo date("H:i", strtotime($json['results'][$i]['openingtimes']['doorsopen']))?>
+                Last entry: <?php echo date("H:i", strtotime($json['results'][$i]['openingtimes']['lastentry']))?>
+                Doors close: <?php echo date("H:i", strtotime($json['results'][$i]['openingtimes']['doorsclose']))?><br>
+                <a href="<?php echo $eventsEndpoint.$json['results'][$i]['id'].'/'.$apiKey?>">Details</a>
             </p>
             <br/>
             <?php
@@ -97,14 +96,23 @@ if($result === false || curl_error($ch)) {
     <tr>
         <?php
         $page = 1;
+        if($page == 1){
+            echo 'Previous&nbsp;';
+        }
+        else{
+        }
+        $endPage;
         for ($i=0; $i < $json['totalcount']; $i += $_POST['records']) {
             if ($page <= 10){
-            ?> <a href="#"> <?php echo $page; ?></a>
-            <?php
+                if ($page == 1) {
+                    echo $page.'&nbsp;';
+                }
+                else{?>
+                    <a href="<?php echo $page;?>"><?php echo $page;?></a>&nbsp;<?php
+                }
             }
         $page++;
-        }
-        ?>
+        }?>
     </tr>
     <?php
     }

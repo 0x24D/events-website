@@ -11,11 +11,10 @@ body{
     color: #fff;
     text-align: center;
 }
-#eventsPage{
+#multiPage{
     min-height: 100vh;
     padding:10px;
     background-color: #b5838d;
-
 }
 #contactPage{
     min-height: 100vh;
@@ -32,4 +31,10 @@ footer{
     background-color: #ffb4a2;
     padding:10px;
     text-align: center;
+}
+#events{
+    display:block;
+}
+#cms{
+    display:none;
 }
