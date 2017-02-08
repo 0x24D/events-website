@@ -42,11 +42,24 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
         <input type="submit" name="adminButton" id="adminButton" value="Admin">
     </header>
     <section id="multiPage">
-        <div id="events">
+        <div id="eventsSection">
             <?php require_once('includes/events.inc.php'); ?>
         </div>
-        <div id="cms">
+        <!-- once users added - only display cms if admin/group=admin -->
+        <div id="cmsSection">
             <?php require_once('includes/cms.inc.php'); ?>
+        </div>
+        <div id="editCMSSection">
+            <?php require_once('/includes/edit.inc.php'); ?>
+        </div>
+        <div id="deleteCMSSection">
+
+        </div>
+        <div id="viewCMSSection">
+
+        </div>
+        <div id="addCMSSection">
+
         </div>
     </section>
     <section id="contactPage">
@@ -90,6 +103,18 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
     });
     $('#adminButton').click(function(){
         toggleCMSPage();
+    });
+    $('editCMSLink').click(function(){
+        loadCMSEditPage('edit');
+    });
+    $('deleteCMSLink').click(function(){
+        loadCMSEditPage('delete');
+    });
+    $('viewCMSLink').click(function(){
+        loadCMSEditPage('view');
+    });
+    $('addCMSLink').click(function(){
+        loadCMSEditPage('add');
     });
     </script>
 </body>

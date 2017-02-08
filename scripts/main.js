@@ -1,19 +1,13 @@
 function openOverlay(){
-    // document.getElementById('openOverlay').style.display='none'
-    // document.getElementById('navLinks').style.display='block'
-    // document.getElementById('closeOverlay').style.display='block';
-    $('#openOverlay').css('display: none');
-    $('navLinks').css('display: block');
-    $('#closeOverlay').css('display: block');
+    document.getElementById('openOverlay').style.display='none'
+    document.getElementById('navLinks').style.display='block'
+    document.getElementById('closeOverlay').style.display='block';
 }
 
 function closeOverlay(){
-    // document.getElementById('openOverlay').style.display='block'
-    // document.getElementById('navLinks').style.display='none'
-    // document.getElementById('closeOverlay').style.display='none';
-    $('#openOverlay').css('display: block');
-    $('navLinks').css('display: none');
-    $('#closeOverlay').css('display: none');
+    document.getElementById('openOverlay').style.display='block'
+    document.getElementById('navLinks').style.display='none'
+    document.getElementById('closeOverlay').style.display='none';
 }
 
 function updateDropdown(dropdown, nextDropdown){
@@ -66,12 +60,30 @@ function getRecords(){
 }
 
 function toggleCMSPage(){
-    if (document.getElementById('events').style.display != 'none') {
-        document.getElementById('events').style.display = 'none';
-        document.getElementById('cms').style.display = 'block';
+    if (document.getElementById('eventsSection').style.display != 'none') {
+        document.getElementById('eventsSection').style.display = 'none';
+        document.getElementById('cmsSection').style.display = 'block';
     }
     else {
-        document.getElementById('cms').style.display = 'none';
-        document.getElementById('events').style.display = 'block';
+        document.getElementById('cmsSection').style.display = 'none';
+        document.getElementById('eventsSection').style.display = 'block';
+
+        if (document.getElementById('editCMSSection').style.display != 'none';) {
+            document.getElementById('editCMSSection').style.display = 'none';
+        }
+        else if (document.getElementById('deleteCMSSection').style.display != 'none';) {
+            document.getElementById('deleteCMSSection').style.display = 'none';
+        }
+        else if (document.getElementById('viewCMSSection').style.display != 'none';) {
+            document.getElementById('viewCMSSection').style.display = 'none';
+        }
+        else if (document.getElementById('addCMSSection').style.display != 'none';) {
+            document.getElementById('addCMSSection').style.display = 'none';
+        }
     }
+}
+
+function loadCMSSubPage(subpage){
+    document.getElementById('eventsSection').style.display = 'none';
+    document.getElementById(subpage+'CMSSection').style.display = 'block';
 }
