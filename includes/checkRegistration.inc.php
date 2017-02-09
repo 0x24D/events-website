@@ -1,6 +1,5 @@
 <?php
-include('conn.inc.php');
-include('includes/conn.inc.php');
+require_once('conn.inc.php');
 $emailAddress = $_POST['emailAddress'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];

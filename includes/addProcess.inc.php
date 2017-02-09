@@ -1,6 +1,5 @@
 <?php
-include('conn.inc.php');
-include('includes/conn.inc.php');
+require_once('conn.inc.php');
 $addProcessSQL = "INSERT INTO cities(city, area, country, latitude, longitude) VALUES (:city, :area, :country, :latitude, :longitude)";
 $addProcessStmt = $pdo->prepare($addProcessSQL);
 $addProcessStmt->bindParam(':city', str_replace(' ', '_',$_POST['addCMSCity']), PDO::PARAM_STR);

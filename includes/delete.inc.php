@@ -1,6 +1,4 @@
 <?php
-include('conn.inc.php');
-include('includes/conn.inc.php');
 $deleteSQL = 'SELECT * FROM cities WHERE id = '.$_POST['id'].';';
 $deleteStmt = $pdo->query($deleteSQL);
 $deleteRow =$deleteStmt->fetchObject();

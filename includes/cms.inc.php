@@ -1,8 +1,4 @@
 <?php
-include('conn.inc.php');
-include('includes/conn.inc.php');
-include('sessions.inc.php');
-include('includes/sessions.inc.php');
 $cmsSQL = 'SELECT * FROM cities;';
 ?>
 <h2>Content Management System</h2>

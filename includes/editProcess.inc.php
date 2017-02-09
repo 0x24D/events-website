@@ -1,6 +1,5 @@
 <?php
-include('conn.inc.php');
-include('includes/conn.inc.php');
+require_once('conn.inc.php');
 $editProcessSQL = "UPDATE cities SET city = :city, area = :area, country = :country,  latitude = :latitude,  longitude = :longitude  WHERE id = :id";
 $editProcessStmt = $pdo->prepare($editProcessSQL);
 $editProcessStmt->bindParam(':city', str_replace(' ', '_',$_POST['editCMSCity']), PDO::PARAM_STR);

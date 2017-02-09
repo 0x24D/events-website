@@ -122,3 +122,28 @@ function loadRegistrationPage(){
     }
     document.getElementById('registrationSection').style.display = 'block';
 }
+
+function loadProfilePage(){
+    if (document.getElementById('eventsSection').style.display != 'none') {
+        document.getElementById('eventsSection').style.display = 'none';
+    }
+    else if(document.getElementById('cmsSection').style.display != 'none'){
+        document.getElementById('cmsSection').style.display = 'none';
+    }
+    else if (document.getElementById('editCMSSection').style.display != 'none') {
+        document.getElementById('editCMSSection').style.display = 'none';
+    }
+    else if (document.getElementById('deleteCMSSection').style.display != 'none') {
+        document.getElementById('deleteCMSSection').style.display = 'none';
+    }
+    else if (document.getElementById('viewCMSSection').style.display != 'none') {
+        document.getElementById('viewCMSSection').style.display = 'none';
+    }
+    else if (document.getElementById('addCMSSection').style.display != 'none') {
+        document.getElementById('addCMSSection').style.display = 'none';
+    }
+    else if (document.getElementById('registrationSection').style.display != 'none') {
+        document.getElementById('registrationSection').style.display = 'none';
+    }
+    document.getElementById('profileSection').style.display = 'block';
+}

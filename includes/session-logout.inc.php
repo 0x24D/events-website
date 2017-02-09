@@ -1,4 +1,4 @@
-<?php require_once('sessions.inc.php');
+<?php
 if (isset($_SESSION['admin'])){
     echo '<input type="submit" name="adminButton" id="adminButton" value="CMS">';
 }?>

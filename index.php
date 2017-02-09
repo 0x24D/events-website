@@ -61,6 +61,9 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
         <div id="registrationSection">
             <?php require_once('includes/registration.inc.php'); ?>
         </div>
+        <div id="profileSection">
+            <?php require_once('includes/profile.inc.php'); ?>
+        </div>
     </section>
     <section id="contactPage">
         <h1>We'd love to hear from you!</h1>
@@ -121,6 +124,9 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     });
     $('#addCMSLink').click(function(){
         loadCMSSubPage('add',this.id);
+    });
+    $('#profileButton').click(function(){
+        loadProfilePage();
     });
     </script>
 </body>

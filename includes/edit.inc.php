@@ -1,6 +1,4 @@
 <?php
-include('conn.inc.php');
-include('includes/conn.inc.php');
 $editSQL = 'SELECT * FROM cities WHERE id = '.$_POST['id'].';';
 $editStmt = $pdo->query($editSQL);
 $editRow =$editStmt->fetchObject();
