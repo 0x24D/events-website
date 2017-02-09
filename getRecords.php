@@ -83,7 +83,7 @@ if($result === false || curl_error($ch)) {
                 Doors open: <?php echo date("H:i", strtotime($json['results'][$i]['openingtimes']['doorsopen']))?>
                 Last entry: <?php echo date("H:i", strtotime($json['results'][$i]['openingtimes']['lastentry']))?>
                 Doors close: <?php echo date("H:i", strtotime($json['results'][$i]['openingtimes']['doorsclose']))?><br>
-                <a href="<?php echo $eventsEndpoint.$json['results'][$i]['id'].'/'.$apiKey?>">Details</a> <!-- remove if not completing -->
+                <a href="#eventsSection" class="reserveEventLink" id="reserve<?php echo $json['results'][$i]['id'];?>">Reserve</a>
             </p>
             <br/>
             <?php

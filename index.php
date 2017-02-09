@@ -67,11 +67,11 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     </section>
     <section id="contactPage">
         <h1>We'd love to hear from you!</h1>
-        <form class="" action="index.html" method="post">
-            <input type="text" name="name" placeholder="Name"><br>
-            <input type="email" name="email" placeholder="Email address"><br>
-            <input type="text" name="subject" placeholder="Subject"><br>
-            <textarea name="message" id="message" rows="8" cols="40" placeholder="Message"></textarea><br><br>
+        <form class="" action="sendToDatabase.php" method="post">
+            <input type="text" name="contactName" id="contactName" placeholder="Name"><br>
+            <input type="email" name="contactEmail" id="contactEmail" placeholder="Email address"><br>
+            <input type="text" name="contactSubject" id="contactSubject" placeholder="Subject"><br>
+            <textarea name="contactMessage" id="contactMessage" rows="8" cols="40" placeholder="Message"></textarea><br><br>
             <input type="submit" name="submit" value="Submit">
         </form>
     </section>
@@ -88,7 +88,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
         closeOverlay();
     })
     if (window.matchMedia("(max-width: 1024px)")) {
-        var numNav = document.querySelectorAll(".navLink"); /*doesn't work in IE8*/
+        var numNav = document.querySelectorAll(".navLink");
         for (var i = 0; i < numNav.length; i++) {
             numNav[i].addEventListener("click",function(){
                 closeOverlay();
@@ -107,15 +107,15 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     $('#adminButton').click(function(){
         toggleCMSPage();
     });
-    var cmsEditLink = document.querySelectorAll(".editCMSLink"); /*doesn't work in IE8*/
+    var cmsEditLink = document.querySelectorAll('.editCMSLink');
     for (var i = 0; i < cmsEditLink.length; i++) {
-        cmsEditLink[i].addEventListener("click",function(){
+        cmsEditLink[i].addEventListener('click',function(){
             loadCMSSubPage('edit', this.id);
         })
     }
-    var cmsDeleteLink = document.querySelectorAll(".deleteCMSLink"); /*doesn't work in IE8*/
+    var cmsDeleteLink = document.querySelectorAll('.deleteCMSLink');
     for (var i = 0; i < cmsDeleteLink.length; i++) {
-        cmsDeleteLink[i].addEventListener("click",function(){
+        cmsDeleteLink[i].addEventListener('click',function(){
             loadCMSSubPage('delete', this.id);
         })
     }
@@ -128,6 +128,13 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     $('#profileButton').click(function(){
         loadProfilePage();
     });
+    var reserveEventLink = document.querySelectorAll('.reserveEventLink');
+    console.log(reserveEventLink.length);
+    for (var i = 0; i < reserveEventLink.length; i++) {
+        reserveEventLink[i].addEventListener('click',function(){
+            reserveEvent(this.id);
+        })
+    }
     </script>
 </body>
 </html>

@@ -147,3 +147,19 @@ function loadProfilePage(){
     }
     document.getElementById('profileSection').style.display = 'block';
 }
+
+function reserveEvent(eventID){
+    $.ajax({
+        url: 'reserveEvent.php',
+        type: 'POST',
+        data: {
+            eventID: eventID.substring(7)
+        },
+        success: function(data){
+            console.log('good!');
+        },
+        error: function(e){
+            console.error(e);
+        }
+    });
+}
