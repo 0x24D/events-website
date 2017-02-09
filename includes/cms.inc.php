@@ -6,10 +6,9 @@ $cmsSQL = 'SELECT * FROM cities;';
 <h2>Content Management System</h2>
 <table>
     <tr>
-        <th>Country</th>
+        <th>City</th>
         <th>Edit</th>
         <th>Delete</th>
-        <th>View</th>
         <th><a href="#addCMSSection" id="addCMSLink">Add New</a></th>
     </tr>
     <?php
@@ -24,7 +23,6 @@ $cmsSQL = 'SELECT * FROM cities;';
             <td><?php echo str_replace('_', ' ', $cmsRow['city']).', '.str_replace('_', ' ', $area).' '.str_replace('_', ' ', $cmsRow['country']);?></td>
             <td><a href="#editCMSSection" class="editCMSLink" id=<?php echo 'edit'.$cmsRow['id'];?>>Edit</a></td>
             <td><a href="#deleteCMSSection" class="deleteCMSLink" id=<?php echo 'delete'.$cmsRow['id'];?>>Delete</a></td>
-            <td><a href="#viewCMSSection" class="viewCMSLink" id=<?php echo 'view'.$cmsRow['id'];?>>View</a></td>
         </tr>
         <?php
     }

@@ -113,12 +113,6 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
             loadCMSSubPage('delete', this.id);
         })
     }
-    var cmsViewLink = document.querySelectorAll(".viewCMSLink"); /*doesn't work in IE8*/
-    for (var i = 0; i < cmsViewLink.length; i++) {
-        cmsViewLink[i].addEventListener("click",function(){
-            loadCMSSubPage('view', this.id);
-        })
-    }
     $('#addCMSLink').click(function(){
         loadCMSSubPage('add',this.id);
     });
