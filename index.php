@@ -1,6 +1,6 @@
 <?php
 require_once("includes/conn.inc.php");
-$sql= "SELECT DISTINCT country FROM cities ORDER BY country";
+$sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -28,7 +28,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
                 <li><a href=#homepage class="navLink">
                     Homepage
                 </a></li>
-                <li><a href=#eventsPage class="navLink">
+                <li><a href=#eventsSection class="navLink">
                     Events
                 </a></li>
                 <!--add link to CMS when admin logged in-->
@@ -51,16 +51,12 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
             <?php require_once('includes/cms.inc.php'); ?>
         </div>
         <div id="editCMSSection">
-            <?php require_once('/includes/edit.inc.php'); ?>
         </div>
         <div id="deleteCMSSection">
-
         </div>
         <div id="viewCMSSection">
-
         </div>
         <div id="addCMSSection">
-
         </div>
     </section>
     <section id="contactPage">
@@ -105,18 +101,31 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
     $('#adminButton').click(function(){
         toggleCMSPage();
     });
-    $('editCMSLink').click(function(){
-        loadCMSEditPage('edit',this.id);
+    var cmsEditLink = document.querySelectorAll(".editCMSLink"); /*doesn't work in IE8*/
+    for (var i = 0; i < cmsEditLink.length; i++) {
+        cmsEditLink[i].addEventListener("click",function(){
+            loadCMSSubPage('edit', this.id);
+        })
+    }
+    var cmsDeleteLink = document.querySelectorAll(".deleteCMSLink"); /*doesn't work in IE8*/
+    for (var i = 0; i < cmsDeleteLink.length; i++) {
+        cmsDeleteLink[i].addEventListener("click",function(){
+            loadCMSSubPage('delete', this.id);
+        })
+    }
+    var cmsViewLink = document.querySelectorAll(".viewCMSLink"); /*doesn't work in IE8*/
+    for (var i = 0; i < cmsViewLink.length; i++) {
+        cmsViewLink[i].addEventListener("click",function(){
+            loadCMSSubPage('view', this.id);
+        })
+    }
+    $('#addCMSLink').click(function(){
+        loadCMSSubPage('add',this.id);
     });
-    $('deleteCMSLink').click(function(){
-        loadCMSEditPage('delete',this.id);
-    });
-    $('viewCMSLink').click(function(){
-        loadCMSEditPage('view',this.id);
-    });
-    $('addCMSLink').click(function(){
-        loadCMSEditPage('add');
-    });
+    // $('#editCMSSubmit').click(function(){
+    //     console.log('clicked');
+    //     cmsEditProcess();
+    // })
     </script>
 </body>
 </html>

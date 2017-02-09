@@ -83,17 +83,20 @@ function toggleCMSPage(){
     }
 }
 
-function loadCMSSubPage(subpage,linkID){
-    document.getElementById('eventsSection').style.display = 'none';
+function loadCMSSubPage(subpage, linkID){
+    document.getElementById('cmsSection').style.display = 'none';
     document.getElementById(subpage+'CMSSection').style.display = 'block';
     $.ajax({
-    url: subpage+'.inc.php',
+    url: 'includes/' + subpage + '.inc.php',
     type: 'POST',
     data: {
-        id: document.getElementById(linkID).value;
+        id: linkID.substring(subpage.length)
     },
-    error: function(e) {
+    success: function(data){
+        $('#'+subpage+'CMSSection').html(data);
+    },
+    error: function(e){
         console.error(e);
     }
-});
+    });
 }

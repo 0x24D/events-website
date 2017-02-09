@@ -1,27 +1,32 @@
 <?php
-require('includes/conn.inc.php');
-$sql = 'SELECT * FROM cities';
-$stmt = $pdo->prepare($sql);
-$stmt->execute();?>
+include('conn.inc.php');
+include('includes/conn.inc.php');
+$cmsSQL = 'SELECT * FROM cities;';
+?>
 <h2>Content Management System</h2>
 <table>
-    <th>
-        <tr>
-            <th>Country</th>
-            <th>Edit</th>
-            <th>Delete</th>
-            <th>View</th>
-            <th><a href="#" id="addCMSLink">Add</a></th>
-        </tr>
-    </th>
-    <?php
-    while($row = $stmt->fetchObject()){?>
     <tr>
-    <td><?php echo str_replace('_', ' ', $row->city).','.str_replace('_', ' ', $row->area).','.str_replace('_', ' ', $row->country);?></td>
-    <td><a href="#" id="editCMSLink" value=".<?php echo $row->id; ?>.">Edit</a></td>
-    <td><a href="#" id="deleteCMSLink" value=".<?php echo $row->id; ?>.">Delete</a></td>
-    <td><a href="#" id="viewCMSLink" value=".<?php echo $row->id; ?>.">View</a></td>
+        <th>Country</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+        <th><a href="#addCMSSection" id="addCMSLink">Add New</a></th>
     </tr>
-<?php}
+    <?php
+    foreach ($pdo->query($cmsSQL) as $cmsRow) {?>
+        <tr>
+            <?php if ($cmsRow['country'] == 'England') {
+                $area = $cmsRow['area'].',';
+            }
+            else {
+                $area = '';
+            }?>
+            <td><?php echo str_replace('_', ' ', $cmsRow['city']).', '.str_replace('_', ' ', $area).' '.str_replace('_', ' ', $cmsRow['country']);?></td>
+            <td><a href="#editCMSSection" class="editCMSLink" id=<?php echo 'edit'.$cmsRow['id'];?>>Edit</a></td>
+            <td><a href="#deleteCMSSection" class="deleteCMSLink" id=<?php echo 'delete'.$cmsRow['id'];?>>Delete</a></td>
+            <td><a href="#viewCMSSection" class="viewCMSLink" id=<?php echo 'view'.$cmsRow['id'];?>>View</a></td>
+        </tr>
+        <?php
+    }
     ?>
 </table>
