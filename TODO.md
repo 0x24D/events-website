@@ -1,3 +1,4 @@
 Events - details, page numbers
 Users - registration, login, profile
-CMS - cities, users
+CMS - users
+CMS SQLi cleaning - edit - add

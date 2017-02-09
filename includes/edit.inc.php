@@ -18,6 +18,5 @@ $editRow =$editStmt->fetchObject();
     <input type="text" name="editCMSLatitude" id="editCMSLatitude" value=<?php echo $editRow->latitude;?>><br>
     <label for="editCMSLongitude">Longitude: </label>
     <input type="text" name="editCMSLongitude" id="editCMSLongitude" value=<?php echo $editRow->longitude;?>><br>
-    <!-- <a href="includes/editProcess.inc.php" name="editCMSSubmit" id="editCMSSubmit">Submit Changes</a> -->
-    <input type="submit" name="editCMSSubmit" id="editCMSSubmit" value="Submit">
+    <input type="submit" name="editCMSSubmit" id="editCMSSubmit" value="Edit">
 </form>

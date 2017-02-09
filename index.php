@@ -122,10 +122,6 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     $('#addCMSLink').click(function(){
         loadCMSSubPage('add',this.id);
     });
-    // $('#editCMSSubmit').click(function(){
-    //     console.log('clicked');
-    //     cmsEditProcess();
-    // })
     </script>
 </body>
 </html>
