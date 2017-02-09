@@ -52,7 +52,6 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
         <div id="eventsSection">
             <?php require_once('includes/events.inc.php'); ?>
         </div>
-        <!-- once users added - only display cms if admin/group=admin -->
         <div id="cmsSection">
             <?php require_once('includes/cms.inc.php'); ?>
         </div>
@@ -61,7 +60,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
         <div id="viewCMSSection"></div>
         <div id="addCMSSection"></div>
         <div id="registrationSection">
-             <h2>Register here</h2>
+            <?php require_once('includes/registration.inc.php'); ?>
         </div>
     </section>
     <section id="contactPage">
@@ -118,7 +117,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
             loadCMSSubPage('delete', this.id);
         })
     }
-    $('registrationButton').click(function(){
+    $('#registrationButton').click(function(){
         loadRegistrationPage();
     });
     $('#addCMSLink').click(function(){
