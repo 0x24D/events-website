@@ -9,8 +9,11 @@ $stmt->bindParam(':emailAddress', $emailAddress, PDO::PARAM_STR);
 $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if ($stmt->rowCount() > 0) {
-    if ((password_verify($password, $row['password'])) && $row['userGroup'] == '2') {
+    if (password_verify($password, $row['password'])) {
         $_SESSION['login'] = 1;
+        if ($row['userGroup'] == '2') {
+            $_SESSION['admin'] = 1;
+        }
     }
 }
 // header("Location: ".$_SERVER['HTTP_REFERER']);
