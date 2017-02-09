@@ -16,6 +16,6 @@ if ($stmt->rowCount() > 0) {
         }
     }
 }
-// header("Location: ".$_SERVER['HTTP_REFERER']);
-header('Location: ../index.php');
+header("Location: ".$_SERVER['HTTP_REFERER']);
+//header('Location: ../index.php');
 ?>

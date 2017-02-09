@@ -74,7 +74,7 @@
             <option value="EXHIB">Exhibitions and Attractions</option>
             <option value="FEST">Festivals</option>
             <option value="KIDS">Kids/Family event</option>
-            <option value="LGB">Gay/Lesbian event</option>
+            <option value="LGB">LGBT event</option>
             <option value="LIVE">Live music</option>
             <option value="SPORT">Sporting event</option>
             <option value="THEATRE">Theatre/dance</option>

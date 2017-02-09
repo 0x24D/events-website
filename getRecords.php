@@ -72,7 +72,7 @@ if($result === false || curl_error($ch)) {
     $json = json_decode($result, true);
     for ($i=0; $i < $_POST['records']; $i++) {
         if(!empty($json['results'][$i])){
-        ?>
+            ?>
             <p>
                 Event: <?php echo $json['results'][$i]['eventname']?><br>
                 Venue: <?php echo $json['results'][$i]['venue']['name']?><br>
@@ -83,38 +83,14 @@ if($result === false || curl_error($ch)) {
                 Doors open: <?php echo date("H:i", strtotime($json['results'][$i]['openingtimes']['doorsopen']))?>
                 Last entry: <?php echo date("H:i", strtotime($json['results'][$i]['openingtimes']['lastentry']))?>
                 Doors close: <?php echo date("H:i", strtotime($json['results'][$i]['openingtimes']['doorsclose']))?><br>
-                <a href="<?php echo $eventsEndpoint.$json['results'][$i]['id'].'/'.$apiKey?>">Details</a>
+                <a href="<?php echo $eventsEndpoint.$json['results'][$i]['id'].'/'.$apiKey?>">Details</a> <!-- remove if not completing -->
             </p>
             <br/>
             <?php
         }
         elseif ($i == 0) {
-                ?><p>No events found.</p><?php
-            }
-    }
-    if (!empty($json['results'][0])){ ?>
-    <tr>
-        <?php
-        $page = 1;
-        if($page == 1){
-            echo 'Previous&nbsp;';
+            ?><p>No events found.</p><?php
         }
-        else{
-        }
-        $endPage;
-        for ($i=0; $i < $json['totalcount']; $i += $_POST['records']) {
-            if ($page <= 10){
-                if ($page == 1) {
-                    echo $page.'&nbsp;';
-                }
-                else{?>
-                    <a href="<?php echo $page;?>"><?php echo $page;?></a>&nbsp;<?php
-                }
-            }
-        $page++;
-        }?>
-    </tr>
-    <?php
     }
 }
 ?>

@@ -1,4 +1,4 @@
-Events - details, page numbers
+Events - details
 Users - profile
 CMS - users
 CMS SQLi cleaning - edit - add
