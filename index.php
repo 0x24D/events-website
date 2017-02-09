@@ -1,5 +1,6 @@
 <?php
-require_once("includes/conn.inc.php");
+require_once('includes/sessions.inc.php');
+require_once('includes/conn.inc.php');
 $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
 ?>
 <!DOCTYPE html>
@@ -40,7 +41,12 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     </div>
     <header id="homepage">
         <h1>UK Events</h1>
-        <input type="submit" name="adminButton" id="adminButton" value="Admin">
+        <?php if(isset($_SESSION['login'])){
+            require_once('includes/session-logout.inc.php');
+        } else {
+            require_once('includes/session-login.inc.php');
+        }?>
+
     </header>
     <section id="multiPage">
         <div id="eventsSection">
@@ -50,13 +56,12 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
         <div id="cmsSection">
             <?php require_once('includes/cms.inc.php'); ?>
         </div>
-        <div id="editCMSSection">
-        </div>
-        <div id="deleteCMSSection">
-        </div>
-        <div id="viewCMSSection">
-        </div>
-        <div id="addCMSSection">
+        <div id="editCMSSection"></div>
+        <div id="deleteCMSSection"></div>
+        <div id="viewCMSSection"></div>
+        <div id="addCMSSection"></div>
+        <div id="registrationSection">
+             <h2>Register here</h2>
         </div>
     </section>
     <section id="contactPage">
@@ -113,6 +118,9 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
             loadCMSSubPage('delete', this.id);
         })
     }
+    $('registrationButton').click(function(){
+        loadRegistrationPage();
+    });
     $('#addCMSLink').click(function(){
         loadCMSSubPage('add',this.id);
     });
