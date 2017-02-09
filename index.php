@@ -46,7 +46,6 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
         } else {
             require_once('includes/session-login.inc.php');
         }?>
-
     </header>
     <section id="multiPage">
         <div id="eventsSection">

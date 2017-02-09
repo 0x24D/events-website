@@ -1,9 +1,18 @@
 <?php
 require_once('sessions.inc.php');
 require_once('conn.inc.php');
-$sql = "SELECT emailAddress, password FROM users;";
-if ($_POST['username'] == "admin" && $_POST['password'] == "letmein"){
-    $_SESSION['login'] = 1;
+$sql = "SELECT password, userGroup FROM users WHERE emailAddress = :emailAddress;";
+$stmt = $pdo->prepare($sql);
+$emailAddress = $_POST['emailAddress'];
+$password = $_POST['password'];
+$stmt->bindParam(':emailAddress', $emailAddress, PDO::PARAM_STR);
+$stmt->execute();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+if ($stmt->rowCount() > 0) {
+    if ((password_verify($password, $row['password'])) && $row['userGroup'] == '2') {
+        $_SESSION['login'] = 1;
+    }
 }
-header("Location: ".$_SERVER['HTTP_REFERER']);
+// header("Location: ".$_SERVER['HTTP_REFERER']);
+header('Location: ../index.php');
 ?>

@@ -4,3 +4,4 @@ CMS - users
 CMS SQLi cleaning - edit - add
 Form validation
 Add geocoding to add/edit page
+Reorganise file structure
