@@ -4,12 +4,19 @@
 #closeOverlay{
     display:none;
 }
-#navLinks{
+#screenLinks a{
+    color: #ffcdb2;
+    text-shadow: 0 0 3px #6d6875;
+}
+#screenLinks{
+    display:inline-block;
     z-index: 1;
     position:fixed;
     top:10%;
 }
-#navLinks a{
-    color: #ffcdb2;
-    text-shadow: 0 0 3px #6d6875;
+#screenLinks li{
+    list-style-type: none;
+}
+#screenLinks a{
+    text-decoration: none;
 }

@@ -4,7 +4,6 @@ body{
     padding:0;
     margin:0;
     font-family: 'Karla', Helvetica, Arial, sans-serif;
-
 }
 body input{
     font-family: 'Karla', Helvetica, Arial, sans-serif;
@@ -12,6 +11,12 @@ body input{
 }
 body input, body select{
     padding: 10px 10px 10px 10px;
+}
+#navLinks, #screenLinks{
+    display:none;
+}
+#overlayButtons{
+    display:none;
 }
 #homepage{
     min-height: 100vh;
@@ -31,12 +36,6 @@ body input, body select{
     padding:10px;
     background-color: #e5989b;
     text-align: center;
-}
-#navLinks li{
-    list-style-type: none;
-}
-#navLinks a{
-    text-decoration: none;
 }
 footer{
     background-color: #ffb4a2;

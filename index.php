@@ -22,9 +22,26 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     <title>UK Events Site</title>
 </head>
 <body>
+    <div id="overlayButtons">
     <span id=openOverlay class="fa fa-bars fa-3x icon-reorder icon-3x"></span>
     <span id=closeOverlay class="fa fa-times fa-3x icon-remove icon-3x"></span>
+</div>
     <div id="navLinks">
+        <nav>
+            <ul>
+                <li><a href=#homepage class="navLink">
+                    Homepage
+                </a></li>
+                <li><a href=#eventsSection class="navLink">
+                    Events
+                </a></li>
+                <li><a href=#contactPage class="navLink">
+                    Contact Us
+                </a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="screenLinks">
         <nav>
             <ul>
                 <li><a href=#homepage class="navLink">
