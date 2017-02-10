@@ -88,11 +88,11 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     <section id="contactPage">
         <h1>We'd love to hear from you!</h1>
         <form class="" action="sendToDatabase.php" method="post">
-            <input type="text" name="contactName" id="contactName" placeholder="Name"><br>
-            <input type="email" name="contactEmail" id="contactEmail" placeholder="Email address"><br>
-            <input type="text" name="contactSubject" id="contactSubject" placeholder="Subject"><br>
-            <textarea name="contactMessage" id="contactMessage" rows="8" cols="40" placeholder="Message"></textarea><br><br>
-            <input type="submit" name="submit" value="Submit">
+            <input type="text" name="contactName" id="contactName" placeholder="Name" required><br>
+            <input type="email" name="contactEmail" id="contactEmail" placeholder="Email address" required><br>
+            <input type="text" name="contactSubject" id="contactSubject" placeholder="Subject" required><br>
+            <textarea name="contactMessage" id="contactMessage" placeholder="Message" required></textarea><br><br>
+            <input type="submit" name="submit" value="Submit" required>
         </form>
     </section>
     <footer id = "footer">

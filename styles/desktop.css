@@ -20,3 +20,7 @@
 #screenLinks a{
     text-decoration: none;
 }
+#contactPage textarea {
+    height: 350px;
+    width: 200px;
+}

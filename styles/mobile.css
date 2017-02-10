@@ -36,3 +36,7 @@
 #overlayButtons{
     display:inline;
 }
+#contactPage textarea {
+    height: 80%;
+    width: 75%;
+}
