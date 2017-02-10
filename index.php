@@ -30,7 +30,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
                 <li><a href=#homepage class="navLink">
                     Homepage
                 </a></li>
-                <li><a href=#multiPage class="navLink">
+                <li><a href=#eventsSection class="navLink">
                     Events
                 </a></li>
                 <li><a href=#contactPage class="navLink">
@@ -82,6 +82,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     <script src="scripts/jquery-3.1.1.min.js"></script>
     <script src="scripts/main.js"></script>
     <script>
+
     $('#openOverlay').click(function(){
         openOverlay();
     });
@@ -129,13 +130,13 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     $('#profileButton').click(function(){
         loadProfilePage();
     });
-    var reserveEventLink = document.querySelectorAll('.reserveEventLink');
-    console.log(reserveEventLink.length);
-    for (var i = 0; i < reserveEventLink.length; i++) {
-        reserveEventLink[i].addEventListener('click',function(){
-            reserveEvent(this.id);
-        })
-    }
+    // var reserveEventLink = document.querySelectorAll('.reserveEventLink');
+    // console.log(reserveEventLink.length);
+    // for (var i = 0; i < reserveEventLink.length; i++) {
+    //     reserveEventLink[i].addEventListener('click',function(){
+    //         reserveEvent(this.id);
+    //     })
+    // }
     </script>
 </body>
 </html>

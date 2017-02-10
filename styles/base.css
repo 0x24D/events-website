@@ -19,17 +19,18 @@ body input, body select{
     padding:10px;
     color: #fff;
     text-align: center;
-
 }
 #multiPage{
     min-height: 100vh;
     padding:10px;
     background-color: #b5838d;
+    text-align: center;
 }
 #contactPage{
     min-height: 100vh;
     padding:10px;
     background-color: #e5989b;
+    text-align: center;
 }
 #navLinks li{
     list-style-type: none;
@@ -69,6 +70,23 @@ footer{
     border-style: solid;
     border-color: #e5989b;
     padding: 10px 50px 10px 50px;
+    margin:10px 10px 10px 10px;
+}
+#multiPage input[type="submit"]{
+    background-color: #e5989b;
+    color: #fff;
+    border-style: solid;
+    border-color: #6d6875;
+    padding: 10px 50px 10px 50px;
+    margin:10px 10px 10px 10px;
+}
+#contactPage input[type="submit"]{
+    background-color: #6d6875;
+    color: #fff;
+    border-style: solid;
+    border-color: #b5838d;
+    padding: 10px 50px 10px 50px;
+    margin:10px 10px 10px 10px;
 }
 #homepage a{
     text-decoration: none;
@@ -78,7 +96,12 @@ footer{
     font-family: 'Karla', Helvetica, Arial, sans-serif;
     font-size 12px;
 }
-#navLinks a{
+#cmsTable, #eventsTable{
+    margin:auto;
+    text-align:center;
+}
+#cmsSection a{
+    text-decoration: none;
     color: #ffcdb2;
     text-shadow: 0 0 3px #6d6875;
 }

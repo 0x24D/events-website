@@ -1,5 +1,5 @@
 <h2>Events Page</h2>
-<table>
+<table id="eventsTable">
     <tr>
         <td>Country</td>
         <td>Area</td>
@@ -53,6 +53,9 @@
         <td>Event type</td>
         <td>Start date</td>
         <td>End date</td>
+        <td>Featured</td>
+        <td>Tickets</td>
+        <td>18+</td>
     </tr>
     <tr>
         <td>
@@ -82,13 +85,6 @@
         </td>
         <td><input type="date" name="startDate" id="startDate" value="<?php echo date('d-m-Y')?>" min="<?php echo date('Y-m-d')?>"></td>
         <td><input type="date" name="endDate" id="endDate"></td>
-    </tr>
-    <tr>
-        <td>Recommended events</td>
-        <td>Tickets available</td>
-        <td>18+</td>
-    </tr>
-    <tr>
         <td><input type="checkbox" name="recommendedEvents" id="recommendedEvents"></td>
         <td><input type="checkbox" name="ticketsAvailable" id="ticketsAvailable"></td>
         <td><input type="checkbox" name="over18" id="over18"></td>

@@ -3,7 +3,7 @@ $cmsSQL = 'SELECT * FROM cities;';
 ?>
 <h2>Content Management System</h2>
 <div id="citiesCMS">
-<table>
+<table id="cmsTable">
     <tr>
         <th>City</th>
         <th>Edit</th>

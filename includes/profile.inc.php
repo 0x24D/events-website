@@ -18,3 +18,4 @@ Account group: <?php if ($profileRow->userGroup == '2'){echo 'Administrator';} e
 Name: <?php echo $profileRow->firstName;?> <?php echo $profileRow->lastName; ?><br>
 Email address: <?php echo $profileRow->emailAddress;?></p>
 <h4>Your reservations:</h4>
+<small>Currently unavailable.</small>
