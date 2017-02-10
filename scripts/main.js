@@ -163,3 +163,22 @@ function reserveEvent(eventID){
         }
     });
 }
+
+function loaduserCMSPage(subpage, linkID){
+    console.log(subpage);
+    document.getElementById('cmsSection').style.display = 'none';
+    document.getElementById(subpage+'CMSSection').style.display = 'block';
+    $.ajax({
+        url: 'includes/' + subpage + '.inc.php',
+        type: 'POST',
+        data: {
+            id: linkID.substring(subpage.length)
+        },
+        success: function(data){
+            $('#'+subpage+'CMSSection').html(data);
+        },
+        error: function(e){
+            console.error(e);
+        }
+    });
+}

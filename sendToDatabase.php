@@ -1,6 +1,7 @@
 <?php
 require_once('includes/sessions.inc.php');
 require_once('includes/conn.inc.php');
+require_once('sanitize.php');
 if (isset($_SESSION['login'])) {
     $sql = "INSERT INTO memberComments (name, emailAddress, subject, message) VALUES (:cName, :cEmailAddress, :cSubject, :cMessage);";
 }

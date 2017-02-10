@@ -3,6 +3,6 @@
                   <input name="emailAddress" type="text" id="emailAddress">
                   <label for="password">Password</label>
                   <input name="password" type="password" id="password">
-                  <input type="submit" name="Submit" value="Login">
+                  <input type="submit" class="homePageButton" name="Submit" value="Login">
 </form>
-<input type="submit" name="registrationButton" id="registrationButton" value="Register">
+<input type="submit" class="homePageButton" name="registrationButton" id="registrationButton" value="Register">

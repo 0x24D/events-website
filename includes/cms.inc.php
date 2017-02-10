@@ -2,6 +2,7 @@
 $cmsSQL = 'SELECT * FROM cities;';
 ?>
 <h2>Content Management System</h2>
+<div id="citiesCMS">
 <table>
     <tr>
         <th>City</th>
@@ -26,3 +27,4 @@ $cmsSQL = 'SELECT * FROM cities;';
     }
     ?>
 </table>
+</div>

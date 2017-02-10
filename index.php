@@ -12,6 +12,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 1025px)">
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400">
     <!--[if IE 7]>
     <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
@@ -29,10 +30,9 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
                 <li><a href=#homepage class="navLink">
                     Homepage
                 </a></li>
-                <li><a href=#eventsSection class="navLink">
+                <li><a href=#multiPage class="navLink">
                     Events
                 </a></li>
-                <!--add link to CMS when admin logged in-->
                 <li><a href=#contactPage class="navLink">
                     Contact Us
                 </a></li>
@@ -41,6 +41,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     </div>
     <header id="homepage">
         <h1>UK Events</h1>
+        <h1>Powered by <a href="https://www.skiddle.com">Skiddle</a></h1>
         <?php if(isset($_SESSION['login'])){
             require_once('includes/session-logout.inc.php');
         } else {
