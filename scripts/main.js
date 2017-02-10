@@ -151,6 +151,31 @@ function loadProfilePage(){
     document.getElementById('profileSection').style.display = 'block';
 }
 
+function loadEventsPage(){
+    if (document.getElementById('profileSection').style.display != 'none') {
+        document.getElementById('profileSection').style.display = 'none';
+    }
+    if(document.getElementById('cmsSection').style.display != 'none'){
+        document.getElementById('cmsSection').style.display = 'none';
+    }
+    if (document.getElementById('editCMSSection').style.display != 'none') {
+        document.getElementById('editCMSSection').style.display = 'none';
+    }
+    if (document.getElementById('deleteCMSSection').style.display != 'none') {
+        document.getElementById('deleteCMSSection').style.display = 'none';
+    }
+    if (document.getElementById('viewCMSSection').style.display != 'none') {
+        document.getElementById('viewCMSSection').style.display = 'none';
+    }
+    if (document.getElementById('addCMSSection').style.display != 'none') {
+        document.getElementById('addCMSSection').style.display = 'none';
+    }
+    if (document.getElementById('registrationSection').style.display != 'none') {
+        document.getElementById('registrationSection').style.display = 'none';
+    }
+    document.getElementById('eventsSection').style.display = 'block';
+}
+
 function reserveEvent(eventID){
     $.ajax({
         url: 'reserveEvent.php',

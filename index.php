@@ -45,13 +45,13 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
         <nav>
             <ul>
                 <li><a href=#homepage class="navLink">
-                    Homepage
+                    H<br>O<br>M<br>E<br>P<br>A<br>G<br>E<br><br><br>
                 </a></li>
                 <li><a href=#multiPage class="navLink">
-                    Events
+                    M<br>U<br>L<br>T<br>I<br><br><br>
                 </a></li>
                 <li><a href=#contactPage class="navLink">
-                    Contact Us
+                    C<br>O<br>N<br>T<br>A<br>C<br>T
                 </a></li>
             </ul>
         </nav>
@@ -64,6 +64,8 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
         } else {
             require_once('includes/session-login.inc.php');
         }?>
+        <p><small>The multi page contains: Events, Registration, User Profile and all CMS pages (admin only).</small></p>
+        <?php require_once('includes/multiLinks.inc.php');?>
     </header>
     <section id="multiPage">
         <div id="eventsSection">
@@ -146,6 +148,9 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
     });
     $('#profileButton').click(function(){
         loadProfilePage();
+    });
+    $('#eventsButton').click(function(){
+        loadEventsPage();
     });
     // var reserveEventLink = document.querySelectorAll('.reserveEventLink');
     // console.log(reserveEventLink.length);
