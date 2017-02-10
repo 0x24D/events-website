@@ -5,5 +5,5 @@
                   <input name="password" type="password" id="password"><br>
                   <input type="submit" class="homePageButton" name="Submit" value="Login">
 </form>
- <label for="registrationButton">Don't have an account? Register here: </label><br>
+<label for="registrationButton">Don't have an account? Register here: </label><br>
 <input type="submit" class="homePageButton" name="registrationButton" id="registrationButton" value="Register">

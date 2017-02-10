@@ -32,7 +32,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
                 <li><a href=#homepage class="navLink">
                     Homepage
                 </a></li>
-                <li><a href=#eventsSection class="navLink">
+                <li><a href=#multiPage class="navLink">
                     Events
                 </a></li>
                 <li><a href=#contactPage class="navLink">
@@ -47,7 +47,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
                 <li><a href=#homepage class="navLink">
                     Homepage
                 </a></li>
-                <li><a href=#eventsSection class="navLink">
+                <li><a href=#multiPage class="navLink">
                     Events
                 </a></li>
                 <li><a href=#contactPage class="navLink">

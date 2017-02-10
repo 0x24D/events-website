@@ -87,6 +87,18 @@ footer{
     padding: 10px 50px 10px 50px;
     margin:10px 10px 10px 10px;
 }
+#eventsTable input[type="text"], #eventsTable input[type="date"], #eventsTable select, #eventsTable input[type="number"], #eventsTable input[type="checkbox"]{
+    border-style: solid;
+    border-color: #6d6875;
+    padding: 10px 50px 10px 50px;
+    margin:10px 10px 10px 10px;
+}
+#contactPage input[type="text"], #contactPage input[type="email"], #contactPage textarea{
+    border-style: solid;
+    border-color: #b5838d;
+    padding: 10px 50px 10px 50px;
+    margin:10px 10px 10px 10px;
+}
 #homepage a{
     text-decoration: none;
     color: #b5838d;
