@@ -26,8 +26,17 @@
 #navLinks li{
     text-align: center;
     padding: 5% 0 5% 0;
+    list-style-type: none;
 }
 #navLinks a{
     color: #ffcdb2;
     font-size: 32px;
+    text-decoration: none;
+}
+#overlayButtons{
+    display:inline;
+}
+#contactPage textarea {
+    height: 80%;
+    width: 75%;
 }

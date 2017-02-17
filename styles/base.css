@@ -3,6 +3,20 @@ body{
     height:100%;
     padding:0;
     margin:0;
+    font-family: 'Karla', Helvetica, Arial, sans-serif;
+}
+body input{
+    font-family: 'Karla', Helvetica, Arial, sans-serif;
+    font-size 12px;
+}
+body input, body select{
+    padding: 10px 10px 10px 10px;
+}
+#navLinks, #screenLinks{
+    display:none;
+}
+#overlayButtons{
+    display:none;
 }
 #homepage{
     min-height: 100vh;
@@ -11,25 +25,94 @@ body{
     color: #fff;
     text-align: center;
 }
-#eventsPage{
+#multiPage{
     min-height: 100vh;
     padding:10px;
     background-color: #b5838d;
-
+    text-align: center;
 }
 #contactPage{
     min-height: 100vh;
     padding:10px;
     background-color: #e5989b;
-}
-#navLinks li{
-    list-style-type: none;
-}
-#navLinks a{
-    text-decoration: none;
+    text-align: center;
 }
 footer{
     background-color: #ffb4a2;
     padding:10px;
     text-align: center;
+}
+#eventsSection{
+    display:block;
+}
+#cmsSection{
+    display:none;
+}
+#editCMSSection{
+    display:none;
+}
+#deleteCMSSection{
+    display:none;
+}
+#addCMSSection{
+    display:none;
+}
+#registrationSection{
+    display:none;
+}
+#profileSection{
+    display:none;
+}
+#homepage input[type="submit"]{
+    background-color: #b5838d;
+    color: #fff;
+    border-style: solid;
+    border-color: #e5989b;
+    padding: 10px 50px 10px 50px;
+    margin:10px 10px 10px 10px;
+}
+#multiPage input[type="submit"]{
+    background-color: #e5989b;
+    color: #fff;
+    border-style: solid;
+    border-color: #6d6875;
+    padding: 10px 50px 10px 50px;
+    margin:10px 10px 10px 10px;
+}
+#contactPage input[type="submit"]{
+    background-color: #6d6875;
+    color: #fff;
+    border-style: solid;
+    border-color: #b5838d;
+    padding: 10px 50px 10px 50px;
+    margin:10px 10px 10px 10px;
+}
+#eventsTable input[type="text"], #eventsTable input[type="date"], #eventsTable select, #eventsTable input[type="number"], #eventsTable input[type="checkbox"]{
+    border-style: solid;
+    border-color: #6d6875;
+    padding: 10px 50px 10px 50px;
+    margin:10px 10px 10px 10px;
+}
+#contactPage input[type="text"], #contactPage input[type="email"], #contactPage textarea{
+    border-style: solid;
+    border-color: #b5838d;
+    padding: 10px 50px 10px 50px;
+    margin:10px 10px 10px 10px;
+}
+#homepage a{
+    text-decoration: none;
+    color: #b5838d;
+}
+#contactPage textarea{
+    font-family: 'Karla', Helvetica, Arial, sans-serif;
+    font-size 12px;
+}
+#cmsTable, #eventsTable{
+    margin:auto;
+    text-align:center;
+}
+#cmsSection a{
+    text-decoration: none;
+    color: #ffcdb2;
+    text-shadow: 0 0 3px #6d6875;
 }

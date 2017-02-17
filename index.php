@@ -1,8 +1,7 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-require_once("includes/conn.inc.php");
-$sql= "SELECT DISTINCT country FROM cities ORDER BY country";
+require_once('includes/sessions.inc.php');
+require_once('includes/conn.inc.php');
+$sql= "SELECT DISTINCT country FROM cities ORDER BY country;";
 ?>
 <!DOCTYPE html>
 <html lang="en-gb">
@@ -13,6 +12,7 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
     <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="styles/desktop.css" media="screen and (min-width: 1025px)">
     <link rel="stylesheet" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400">
     <!--[if IE 7]>
     <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
@@ -22,15 +22,17 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
     <title>UK Events Site</title>
 </head>
 <body>
+    <div id="overlayButtons">
     <span id=openOverlay class="fa fa-bars fa-3x icon-reorder icon-3x"></span>
     <span id=closeOverlay class="fa fa-times fa-3x icon-remove icon-3x"></span>
+</div>
     <div id="navLinks">
         <nav>
             <ul>
                 <li><a href=#homepage class="navLink">
                     Homepage
                 </a></li>
-                <li><a href=#eventsPage class="navLink">
+                <li><a href=#multiPage class="navLink">
                     Events
                 </a></li>
                 <li><a href=#contactPage class="navLink">
@@ -39,72 +41,58 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
             </ul>
         </nav>
     </div>
+    <div id="screenLinks">
+        <nav>
+            <ul>
+                <li><a href=#homepage class="navLink">
+                    H<br>O<br>M<br>E<br>P<br>A<br>G<br>E<br><br><br>
+                </a></li>
+                <li><a href=#multiPage class="navLink">
+                    M<br>U<br>L<br>T<br>I<br><br><br>
+                </a></li>
+                <li><a href=#contactPage class="navLink">
+                    C<br>O<br>N<br>T<br>A<br>C<br>T
+                </a></li>
+            </ul>
+        </nav>
+    </div>
     <header id="homepage">
         <h1>UK Events</h1>
+        <h1>Powered by <a href="https://www.skiddle.com">Skiddle</a></h1>
+        <?php if(isset($_SESSION['login'])){
+            require_once('includes/session-logout.inc.php');
+        } else {
+            require_once('includes/session-login.inc.php');
+        }?>
+        <p><small>The multi page contains: Events, Registration, User Profile and all CMS pages (admin only).</small></p>
+        <?php require_once('includes/multiLinks.inc.php');?>
     </header>
-    <section id="eventsPage">
-        <h2>Events page</h2>
-        <table>
-            <tr>
-                <th>Country</th>
-                <th>Area</th>
-                <th>City</th>
-                <th>Radius (miles)</th>
-                <th>No. of Records</th>
-            </tr>
-            <tr>
-                <td>
-                    <select name="country" id="country">
-                        <option value="base" selected>-</option>
-                        <?php
-                        foreach($pdo->query($sql) as $row) {
-                            ?>
-                            <option value=<?php echo $row['country'];?>><?php echo str_replace("_", " ", $row['country']);?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </td>
-                <td>
-                    <div id="areaList">
-                        <select name="area" id="area">
-                            <option value="base" selected>-</option>
-                        </select>
-                    </div>
-                </td>
-                <td>
-                    <div id="cityList">
-                    <select name="city" id="city">
-                        <option value="base" selected>-</option>
-                        <div id="cityList"></div>
-                    </select>
-                </div>
-                </td>
-                <td><input type="number" name="radius" id="radius" required></td>
-                <td>
-                    <select name="records" id="records">
-                    <option value="25" selected>25</option>
-                    <option value="50">50</option>
-                    <option value="75">75</option>
-                    <option value="100">100</option>
-                </select>
-                </td>
-                <td>
-                    <input type="submit" name="searchEvents" id="searchEvents" class="fa" value="&#xf002;">
-                </td>
-            </tr>
-        </table>
-        <table id = "eventsRecords">
-        </table>
+    <section id="multiPage">
+        <div id="eventsSection">
+            <?php require_once('includes/events.inc.php'); ?>
+        </div>
+        <div id="cmsSection">
+            <?php require_once('includes/cms.inc.php'); ?>
+        </div>
+        <div id="editCMSSection"></div>
+        <div id="deleteCMSSection"></div>
+        <div id="viewCMSSection"></div>
+        <div id="addCMSSection"></div>
+        <div id="registrationSection">
+            <?php require_once('includes/registration.inc.php'); ?>
+        </div>
+        <div id="profileSection">
+            <?php require_once('includes/profile.inc.php'); ?>
+        </div>
     </section>
     <section id="contactPage">
         <h1>We'd love to hear from you!</h1>
-        <form class="" action="index.html" method="post">
-            <input type="text" name="name" placeholder="Name"><br>
-            <input type="email" name="email" placeholder="Email address"><br>
-            <input type="text" name="subject" placeholder="Subject"><br>
-            <textarea name="message" id="message" rows="8" cols="40" placeholder="Message"></textarea><br><br>
-            <input type="submit" name="submit" value="Submit">
+        <form class="" action="sendToDatabase.php" method="post">
+            <input type="text" name="contactName" id="contactName" placeholder="Name" required><br>
+            <input type="email" name="contactEmail" id="contactEmail" placeholder="Email address" required><br>
+            <input type="text" name="contactSubject" id="contactSubject" placeholder="Subject" required><br>
+            <textarea name="contactMessage" id="contactMessage" placeholder="Message" required></textarea><br><br>
+            <input type="submit" name="submit" value="Submit" required>
         </form>
     </section>
     <footer id = "footer">
@@ -113,29 +101,64 @@ $sql= "SELECT DISTINCT country FROM cities ORDER BY country";
     <script src="scripts/jquery-3.1.1.min.js"></script>
     <script src="scripts/main.js"></script>
     <script>
-    document.getElementById("openOverlay").onclick = function(){
+
+    $('#openOverlay').click(function(){
         openOverlay();
-    }
-    document.getElementById("closeOverlay").onclick = function(){
+    });
+    $('#closeOverlay').click(function(){
         closeOverlay();
-    }
+    })
     if (window.matchMedia("(max-width: 1024px)")) {
-        var numNav = document.querySelectorAll(".navLink"); /*doesn't work in IE8*/
+        var numNav = document.querySelectorAll(".navLink");
         for (var i = 0; i < numNav.length; i++) {
             numNav[i].addEventListener("click",function(){
                 closeOverlay();
             })
         }
     }
-    document.getElementById("country").onchange = function(){
-        updateDropdown(this.id, "area"); //remove hardcoded parameters
-    }
-    document.getElementById("areaList").onchange = function(){
-        updateDropdown("area", "city"); //remove hardcoded parameters
-    }
-    document.getElementById("searchEvents").onclick = function(){
+    $('#country').change(function(){
+        updateDropdown(this.id, "area");
+    });
+    $('#areaList').change(function(){
+        updateDropdown('area','city');
+    });
+    $('#searchEvents').click(function(){
         getRecords();
+    });
+    $('#adminButton').click(function(){
+        toggleCMSPage();
+    });
+    var cmsEditLink = document.querySelectorAll('.editCMSLink');
+    for (var i = 0; i < cmsEditLink.length; i++) {
+        cmsEditLink[i].addEventListener('click',function(){
+            loadCMSSubPage('edit', this.id);
+        })
     }
+    var cmsDeleteLink = document.querySelectorAll('.deleteCMSLink');
+    for (var i = 0; i < cmsDeleteLink.length; i++) {
+        cmsDeleteLink[i].addEventListener('click',function(){
+            loadCMSSubPage('delete', this.id);
+        })
+    }
+    $('#registrationButton').click(function(){
+        loadRegistrationPage();
+    });
+    $('#addCMSLink').click(function(){
+        loadCMSSubPage('add',this.id);
+    });
+    $('#profileButton').click(function(){
+        loadProfilePage();
+    });
+    $('#eventsButton').click(function(){
+        loadEventsPage();
+    });
+    // var reserveEventLink = document.querySelectorAll('.reserveEventLink');
+    // console.log(reserveEventLink.length);
+    // for (var i = 0; i < reserveEventLink.length; i++) {
+    //     reserveEventLink[i].addEventListener('click',function(){
+    //         reserveEvent(this.id);
+    //     })
+    // }
     </script>
 </body>
 </html>
